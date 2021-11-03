@@ -1,0 +1,32 @@
+<div class="input-group col-md-12" >
+    <div class="input-group-prepend">
+      <span class="input-group-text">Ingrese datos del Profesional</span>
+    </div>
+    <input type="text" class="form-control" name="matricula" [(ngModel)]="matricula" id="matricula" placeholder="Ingrese Nro. matricula">
+    <input type="text" class="form-control"  name="tipoMatricula" [(ngModel)]="tipoMatricula" id="tipoMatricula" placeholder="Ingrese Tipo. matricula">
+    <button class="btn btn-outline-secondary" type="button" id="buscarProfesional" (click)="buscarProfesional(tipoMatricula,matricula)">Buscar</button>
+  </div>
+
+  <div class="col-12" style="height: 50px;" *ngIf='mostrarErrorFP '>
+    <div class="alert alert-danger" role="alert"  >
+      No existe esa formación profesional
+    </div>
+  </div>
+ 
+
+  <div class="col" style="height: 50px;"*ngIf='formacionProfesional.length && !mostrarErrorFP '>
+    <div class="alert alert-success" role="alert">
+     Formación profesional encontrada</div>
+  </div>
+
+  <div class="col-12" style="height: 50px;" *ngIf='formacionProfesional.length && !mostrarErrorFP && mostrarErrorMedico'>
+    <div class="alert alert-danger" role="alert" >
+    No hay medico con esa formación profesional</div>
+  </div>
+
+  <div class="input-group col-md-12" *ngIf="formacionProfesional.length && !mostrarErrorFP && !mostrarErrorMedico">
+    <div class="input-group-prepend has-success">
+      <span class="input-group-text">Datos del Profesional</span>
+    </div>
+    <input type="text" class="form-control" name="nombreMedico" [(ngModel)]="nombreMedico" id="nombreMedico" disabled>
+  </div>

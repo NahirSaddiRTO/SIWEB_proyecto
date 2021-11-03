@@ -1,0 +1,74 @@
+
+
+<div class="col-lg-8 mx-auto">
+    <div class="card mx-auto">
+      <div class="card-header">
+        <div class="alert alert-info" name="titulo-transaccion" role="alert">
+          Alta de paciente con historia clinica
+        </div>
+    </div>
+   
+<div class="container p-4">
+  <form  class="row">
+  <div class="input-group col-md-12">
+    <div class="input-group-prepend">
+      <span class="input-group-text">Ingrese datos de identidad</span>
+    </div>
+  </div>   
+
+  <div class="input-group col-md-12">
+    <select class="form-control"  [(ngModel)]="paciente.tipodni" (change)="changeValueTipoDni($event)"name="paciente.tipodni" placeholder="tipo dni" >
+        <option *ngFor="let item of tiposDni" value="{{item}}" >{{item}}</option>
+    </select>
+   
+    <input type="text" class="form-control"  name="paciente.nrodocumento" [(ngModel)]="paciente.nrodocumento" placeholder=" nro documento">
+    <input type="date"  class="form-control"  name="paciente.fechanacimiento"  [(ngModel)]="paciente.fechanacimiento"/>
+  </div>   
+
+  <div class="input-group col-md-12">
+    <input type="text" class="form-control" name="paciente.nombre" [(ngModel)]="paciente.nombre" placeholder=" nombre"  required>
+    <input type="text" class="form-control" name="paciente.apellido" [(ngModel)]="paciente.apellido" placeholder=" apellido"  required>
+  </div>   
+
+  <div class="input-group col-md-12">
+    <select class="form-control" [(ngModel)]="paciente.estado" (change)="changeValueEstados($event)" name="paciente.estado" placeholder=" estado civil">
+        <option *ngFor="let item of estados" value="{{item}}" >{{item}}</option>
+    </select>
+    <select class="form-control" [(ngModel)]="paciente.sexo" (change)="changeValueSexo($event)" name="paciente.sexo" placeholder=" sexo">
+        <option *ngFor="let item of sexos" value="{{item}}" >{{item}}</option>
+    </select>
+  </div>   
+ 
+  <div class="input-group col-md-12">
+    <div class="input-group-prepend">
+      <span class="input-group-text">Ingrese direccion</span>
+    </div>
+  </div>   
+
+  <div class="input-group col-md-12">
+    <input type="text" class="form-control" name="paciente.calle" [(ngModel)]="paciente.calle" placeholder=" calle"  required>
+    <input type="number" class="form-control" name="paciente.altura" [(ngModel)]="paciente.altura" placeholder=" altura"  required>
+    <input type="number"  class="form-control" name="paciente.piso"  [(ngModel)]="paciente.piso" placeholder=" piso"/>
+  </div>   
+
+  <div class="input-group col-md-12">
+    <div class="input-group-prepend">
+      <span class="input-group-text">Ingrese datos de contacto</span>
+    </div>
+  </div>   
+
+  <div class="input-group col-md-12">
+    <input type="text" class="form-control" name="paciente.telefono_pac[0]" [(ngModel)]="paciente.telefono_pac[0]" placeholder=" telefono"  required>
+</div>   
+
+    <div class="form-group col-12" >
+      <button type="submit" class="btn btn-primary" (click)="crearPaciente()">Crear paciente</button>
+    </div>
+
+  </form>
+    </div>
+</div>
+</div>
+
+
+
