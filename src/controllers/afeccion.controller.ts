@@ -75,7 +75,7 @@ export async function obtenerNombreAfeccion(idAfeccion:any) {
      return {nom : laAfeccion.nombre, diag: laAfeccion.diagnostico, sintomas: laAfeccion.sintomas, tratamiento: laAfeccion.tratamiento}
  }
 
-export async function agregaConsultaAAfeccion(afeccionId: any, consultaId: any) {
+export async function agregaConsultaAAfeccion(afeccionId: any, consultaId: any): Promise<any> {
     try{    
     let valido=false;
     let resultado;

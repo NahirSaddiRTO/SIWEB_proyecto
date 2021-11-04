@@ -10,7 +10,7 @@ export async function obtenerPacientesxDNI(nrodocumento:any,tipodni:any) {
     return lista;
 }
 
-export async function registrarPaciente(data:any) {
+export async function registrarPaciente(data:any): Promise<any> {
     try{
     let resultado;
     let valido=false;
