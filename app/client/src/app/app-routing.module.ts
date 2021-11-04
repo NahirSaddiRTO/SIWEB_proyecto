@@ -6,6 +6,7 @@ import { AfeccionComponent } from './components/afeccion/afeccion.component';
 import { ConsultaComponent } from './components/consulta/consulta.component';
 import { PacienteComponent } from './components/paciente/paciente.component';
 import { MedicacionComponent } from './components/medicacion/medicacion.component';
+import {  ConsultaTratamientoComponent } from './components/consulta-tratamientos/consulta-tratamiento.component';
 
 
 const routes: Routes = [
@@ -14,6 +15,7 @@ const routes: Routes = [
   {path: 'alta-tratamiento',component: AltaTratamientoComponent},
   { path: 'alta-pacienteHC', component: PacienteComponent },
   { path: 'consultaMedicaciones', component: MedicacionComponent },
+  { path: 'consultaTratamiento', component: ConsultaTratamientoComponent }
 ];
 
 @NgModule({
