@@ -3,19 +3,21 @@
         <div class="collapse navbar-collapse" id="navbarColor01">
           <a class="navbar-brand" href="">
             <img src="../../../assets/logo1.png" width="105" height="52">
-            
+          
           </a>
         <!-- <ul class="navbar-nav">
           <li class="nav-item d-none d-sm-inline-block">
             <a routerLink="/" class="nav-link active">siweb</a>
           </li>
         </ul> -->
-
     <ul class="navbar-nav ml-auto" *ngIf="user$ | async as user;else login">
-    
+      
       <li class="nav-item dropdown" *ngIf="user$">
        <a class="nav-link" data-toggle="dropdown">
-          <div class="avatar avatar-xs">
+          <div class="avatar avatar-xs"  *ngIf="user?.photoURL">
+            <img id="user" class="avatar-img rounded-circle" src="{{user?.photoURL}}">
+          </div>
+          <div class="avatar avatar-xs" *ngIf="!user?.photoURL">
             <img id="user" class="avatar-img rounded-circle" src="../../../assets/3-thumb.png">
           </div>
         </a> 

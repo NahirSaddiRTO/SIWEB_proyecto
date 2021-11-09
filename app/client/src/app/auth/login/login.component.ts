@@ -36,4 +36,19 @@ export class LoginComponent implements OnInit {
     }
    
   }
+
+  async loguearseGoogle(){
+    try{
+      const user = await this.authSvc.loginGoogle();
+      if(user){
+        //regirect a home
+        this.router.navigate(['/home']);
+      }  
+    }
+    catch(err){
+      console.log(err)
+    }
+   
+
+  }
 }

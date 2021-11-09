@@ -18,6 +18,7 @@ public user$: Observable <any> =  this.authSvc.afAuth.user;
     private router:Router) { }
 
   async ngOnInit() {
+    console.log(this.user$);
   }
   async cerrar() {
     try{

@@ -8,7 +8,6 @@
                     <div class="text-gray-400 fw-bold fs-4">¿No tenés una cuenta? 
                         <a [routerLink]="['/register']" class="link-primary fw-bolder">Crear cuenta</a></div>
                 </div>
-               
                 <form [formGroup]="loginForm" (ngSubmit)="loguearse()">
                     <div class="form-group">
                       <label for="email">Email</label>
@@ -24,7 +23,11 @@
                       <label><input type="checkbox"> Recuerdame</label>
                     </div>
                     <button type="submit" class="btn btn-primary btn-lg btn-block">Iniciar Sesion</button>
+                    <div class="form-group mt-3">
+                      <button class="btn btn-lg btn-google" (click)="loguearseGoogle()">Iniciar Sesion - Google</button>
+                    </div>
                   </form>
+                 
             </div>
         </div>
         
