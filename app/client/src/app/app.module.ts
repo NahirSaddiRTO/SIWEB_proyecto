@@ -5,9 +5,11 @@ import {FormsModule} from '@angular/forms'
 import { HttpClientModule } from '@angular/common/http';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ReactiveFormsModule } from '@angular/forms';
+import { AngularFireModule } from '@angular/fire';
+import {AngularFireAuthModule} from '@angular/fire/auth';
+
 
 //COMPONENTES
-import { RootComponent } from './root/root.component';
 import { AfeccionComponent } from './components/afeccion/afeccion.component';
 import { AltaTratamientoComponent } from './components/tratamiento/alta-tratamiento.component';
 import { ConsultaComponent } from './components/consulta/consulta.component';
@@ -17,11 +19,15 @@ import { FormacionProfesionalComponent } from './components/formacion-profesiona
 
 //RUTAS
 import { AppRoutingModule } from './app-routing.module';
+import { AppComponent } from './app.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
+import { environment } from 'src/environments/environment';
 
 
 @NgModule({
   declarations: [
-    RootComponent,
+    AppComponent,
+    NavbarComponent,
     AfeccionComponent,
     ConsultaComponent,
     AltaTratamientoComponent,
@@ -35,10 +41,12 @@ import { AppRoutingModule } from './app-routing.module';
     NgbModule,
     FormsModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFireAuthModule
   ],
   providers: [],
-  bootstrap: [RootComponent]
+  bootstrap: [AppComponent]
 })
 export class AppModule { }
 

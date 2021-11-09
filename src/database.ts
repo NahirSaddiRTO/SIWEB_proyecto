@@ -1,6 +1,6 @@
 import {connect} from 'mongoose';
-//const uri = "mongodb+srv://NahirSaddi:Nahir123456@dbsaludprov.pvodm.mongodb.net/Salud_Provincial?retryWrites=true&w=majority";
-const uri = "mongodb+srv://Caro:123456Caro@dbsaludprov.pvodm.mongodb.net/Salud_Provincial?retryWrites=true&w=majority";
+const uri = "mongodb+srv://NahirSaddi:Nahir123456@dbsaludprov.pvodm.mongodb.net/Salud_Provincial?retryWrites=true&w=majority";
+//const uri = "mongodb+srv://Caro:123456Caro@dbsaludprov.pvodm.mongodb.net/Salud_Provincial?retryWrites=true&w=majority";
 
 const DATABASE_NAME = "Salud_Provincial";
 
