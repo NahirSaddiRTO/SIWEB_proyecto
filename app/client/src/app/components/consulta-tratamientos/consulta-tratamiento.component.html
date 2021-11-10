@@ -26,7 +26,9 @@
                 class="form-control"
                 id="pacienteConsulta.tipodni"
                 
-                
+                required
+                [(ngModel)]="pacienteConsulta.tipodni"
+                name="pacienteConsulta.tipodni"
 
                 
                 placeholder="Ingrese el tipo de documento del paciente"
@@ -38,6 +40,10 @@
                 type="text"
                 class="form-control"
                 id="pacienteConsulta.nrodocumento"
+
+                required
+                [(ngModel)]="pacienteConsulta.nrodocumento"
+                name="pacienteConsulta.nrodocumento"
                 
                 placeholder="Ingrese el n° de documento del paciente"
               />
@@ -48,12 +54,13 @@
             <button
               type="button"
               class="btn btn-info"
+              (click)="getPacienteConsulta(pacienteConsulta.nrodocumento, pacienteConsulta.tipodni)"
             >
               <!-- (click)="getPaciente(paciente.tipodni,paciente.nrodocumento.value)" getPaciente() -->
               Buscar paciente
             </button>
 
-            <!-- <div class="form-group">
+             <div class="form-group">
               <div class="card" *ngIf="encontroPacienteConsulta">
                 <div class="card-header" *ngIf="encontroPacienteConsulta">
                   <div class="alert alert-success" role="alert">
@@ -61,7 +68,7 @@
                   </div>
                 </div>
               </div>
-            </div>-->
+            </div>
 
 
           </form>
