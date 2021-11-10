@@ -1,2 +1,140 @@
-<h1>Alta Tratamiento</h1>
 
+<!--      ****************************************       CAMBIO DE TRANSACCION      ****************************************     -->
+<!--//////////////////////////////////////////// COMIENZO CONSULTA TRATAMIENTO /////////////////////////////////////////////-->
+<!---->
+<!---->
+<!---->
+
+<h1>Consulta Tratamiento</h1>
+
+<div class="col-lg-12 mx-auto">
+  <div class="card">
+    <div class="card-header">
+      <div class="alert alert-info" role="alert">
+        Consulta de un tratamiento para una afección
+      </div>
+    </div>
+
+    <form>
+      <div class="card-body">
+        <!--<form (submit)="uploadPhoto(title, description)">-->
+        <div class="form-group">
+          <form #formularioPacienteBis="ngForm">
+            <div class="form-group">
+              <input
+                type="text"
+                class="form-control"
+                id="pacienteConsulta.tipodni"
+                
+                required
+                [(ngModel)]="pacienteConsulta.tipodni"
+                name="pacienteConsulta.tipodni"
+
+                
+                placeholder="Ingrese el tipo de documento del paciente"
+              />
+            </div>
+
+            <div class="form-group">
+              <input
+                type="text"
+                class="form-control"
+                id="pacienteConsulta.nrodocumento"
+
+                required
+                [(ngModel)]="pacienteConsulta.nrodocumento"
+                name="pacienteConsulta.nrodocumento"
+                
+                placeholder="Ingrese el n° de documento del paciente"
+              />
+            </div>
+
+            <!-- (click)="getPaciente(paciente.tipodni,paciente.nrodocumento.value)" getPaciente() -->
+
+            <button
+              type="button"
+              class="btn btn-info"
+              (click)="getPacienteConsulta(pacienteConsulta.nrodocumento, pacienteConsulta.tipodni)"
+            >
+              <!-- (click)="getPaciente(paciente.tipodni,paciente.nrodocumento.value)" getPaciente() -->
+              Buscar paciente
+            </button>
+
+             <div class="form-group">
+              <div class="card" *ngIf="encontroPacienteConsulta">
+                <div class="card-header" *ngIf="encontroPacienteConsulta">
+                  <div class="alert alert-success" role="alert">
+                    Paciente encontrado!
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+          </form>
+        </div>
+
+       
+
+
+
+        <div class="input-group-prepend">
+          <button
+              type="button"
+              class="btn btn-primary"
+              (click)="getAfeccionesConsulta()"
+            >
+              Seleccione afeccion para consultar tratamiento
+            </button>
+          <button
+            type="button"
+            class="btn btn-light"
+            *ngIf="hayAfeccionConsulta"
+            (click)="obtenerDiagnosticoConsulta()"
+          >
+            <!--(click)="buscarDiagnosticoOn()-->
+            <div class="card" style="width: 18rem">
+              <div class="card-header">
+                <input
+                  type="text"
+                  class="form-control"
+                  name="nomUnaAfeccionConsulta"
+                  [(ngModel)]="nomUnaAfeccionConsulta"
+                  id="nomUnaAfeccionConsulta"
+                  disabled
+                />
+              </div>
+            </div>
+          </button>
+        </div>
+
+
+
+
+        
+        <div class="form-group" *ngIf="hayAfeccionConsulta && hayDiagnosticoConsulta">
+        <div class="form-group">
+          <button class="btn btn-success" (click)="obtenerDatosTratamiento()">Consultar Tratamiento</button>
+        </div>
+        <table class="table table-bordered" *ngIf="consultaTratamientoOn">
+          <thead>
+            <tr>
+              <th>Datos del Tratamiento</th>
+            </tr>
+          </thead>
+          <tbody>
+
+            <td>
+              <p><b>Descripcion: </b> {{tratamiento.descripcion}}</p>
+              <p><b>Duración en días: </b>{{tratamiento.duracion_en_dias}}</p>
+              <p><b>Tipo: </b>{{tratamiento.tipo}}</p>
+              <p><b>Fecha: </b>{{tratamiento.fecha}}</p>
+              <!--<p>tratamiento.medico</p>
+              <p>tratamiento.medicacion</p>-->
+            </td>
+          </tbody>
+        </table>
+      </div>
+      </div>
+    </form>
+  </div>
