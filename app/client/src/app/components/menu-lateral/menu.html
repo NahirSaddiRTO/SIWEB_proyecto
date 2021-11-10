@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Side menu</title>
+    <link rel="stylesheet" href="sidemenu.css">
+</head>
+
+<body>
+    <div id="sidemenu" class="menu-collapsed">
+        <!--HEADER-->
+        <div id="header">
+           <!-- <div id="title"><span>Operaciones</span></div>-->
+            <div id="menu-btn">
+                <div class="btn-hamburger"></div>
+                <div class="btn-hamburger"></div>
+                <div class="btn-hamburger"></div>
+            </div>
+
+        </div>
+        <!--PROFILE-->
+        <div id="profile">
+            <div id="photo"><img src="imagenes/profile.png"alt="foto user"></div>
+            <div id="name"><span>¡Bienvenido a sus operaciones!</span></div>
+        </div>
+
+        <!--ITEMS-->
+        <div id="menu-items">
+            <div class="item">
+                <a href="#">
+                    <div class="icon"><img src="imagenes/altaPaciente.png" alt=""></div>
+                    <div class="title"><span>Registrar Paciente</span></div>
+                </a>
+            </div>
+
+           <!-- <div class="item separator"></div>-->
+
+            <div class="item">
+                <a href="#">
+                    <div class="icon"><img src="imagenes/altaTratamiento2.jpg" alt=""></div>
+                    <div class="title"><span>Registrar Tratamiento</span></div>
+                </a>
+            </div>
+            <div class="item">
+                <a href="#">
+                    <div class="icon"><img src="imagenes/consultaMed2.jpg" alt=""></div>
+                    <div class="title"><span>Consultar Medicaciones</span></div>
+                </a>
+            </div>
+            <div class="item">
+                <a href="#">
+                    <div class="icon"><img src="imagenes/consultaTratamiento2.jpg" alt=""></div>
+                    <div class="title"><span>Consultar Tratamiento</span></div>
+                </a>
+            </div>
+        </div>
+
+        
+
+
+
+        
+       
+
+
+    </div>
+
+    <div id= "main-container"> Hola a todos </div>
+    <script>const btn=document.querySelector('#menu-btn');
+            const menu=document.querySelector('#sidemenu');
+            btn.addEventListener('click',e=>{
+                menu.classList.toggle("menu-expanded");
+                menu.classList.toggle("menu-collapsed");
+                document.querySelector('body').classList.toggle('body-expanded');
+            });
+    </script>
+</body>
+
+
+</html>

@@ -9,7 +9,18 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.AppRoutingModule = void 0;
 const core_1 = require("@angular/core");
 const router_1 = require("@angular/router");
-const routes = [];
+const alta_tratamiento_component_1 = require("./components/tratamiento/alta-tratamiento.component");
+const afeccion_component_1 = require("./components/afeccion/afeccion.component");
+const consulta_component_1 = require("./components/consulta/consulta.component");
+const paciente_component_1 = require("./components/paciente/paciente.component");
+const medicacion_component_1 = require("./components/medicacion/medicacion.component");
+const routes = [
+    { path: 'afeccion', component: afeccion_component_1.AfeccionComponent },
+    { path: 'alta-consulta', component: consulta_component_1.ConsultaComponent },
+    { path: 'alta-tratamiento', component: alta_tratamiento_component_1.AltaTratamientoComponent },
+    { path: 'alta-pacienteHC', component: paciente_component_1.PacienteComponent },
+    { path: 'consultaMedicaciones', component: medicacion_component_1.MedicacionComponent },
+];
 let AppRoutingModule = class AppRoutingModule {
 };
 AppRoutingModule = __decorate([

@@ -10,7 +10,7 @@ exports.AppComponent = void 0;
 const core_1 = require("@angular/core");
 let AppComponent = class AppComponent {
     constructor() {
-        this.title = 'client';
+        this.title = 'angular-gallery';
     }
 };
 AppComponent = __decorate([
