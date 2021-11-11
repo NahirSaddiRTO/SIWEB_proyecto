@@ -21,6 +21,7 @@ const consulta_component_1 = require("./components/consulta/consulta.component")
 const paciente_component_1 = require("./components/paciente/paciente.component");
 const medicacion_component_1 = require("./components/medicacion/medicacion.component");
 const formacion_profesional_component_1 = require("./components/formacion-profesional/formacion-profesional.component");
+const consulta_tratamiento_component_1 = require("./components/consulta-tratamientos/consulta-tratamiento.component");
 //RUTAS
 const app_routing_module_1 = require("./app-routing.module");
 let AppModule = class AppModule {
@@ -34,7 +35,8 @@ AppModule = __decorate([
             alta_tratamiento_component_1.AltaTratamientoComponent,
             paciente_component_1.PacienteComponent,
             medicacion_component_1.MedicacionComponent,
-            formacion_profesional_component_1.FormacionProfesionalComponent
+            formacion_profesional_component_1.FormacionProfesionalComponent,
+            consulta_tratamiento_component_1.ConsultaTratamientoComponent
         ],
         imports: [
             platform_browser_1.BrowserModule,
