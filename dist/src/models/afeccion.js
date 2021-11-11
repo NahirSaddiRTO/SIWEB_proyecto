@@ -21,7 +21,7 @@ var __importStar = (this && this.__importStar) || function (mod) {
 const mongoose = __importStar(require("mongoose"));
 const afeccionSchema = new mongoose.Schema({
     nombre: { type: String, required: true },
-    tratamiento: { '_id': mongoose.Schema.Types.ObjectId },
+    tratamiento: [{ '_id': mongoose.Schema.Types.ObjectId }],
     sintomas: [{ '_id': mongoose.Schema.Types.ObjectId }],
     consulta: [{ '_id': mongoose.Schema.Types.ObjectId }],
     diagnostico: { '_id': mongoose.Schema.Types.ObjectId },

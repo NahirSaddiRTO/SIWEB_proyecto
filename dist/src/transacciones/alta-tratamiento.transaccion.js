@@ -27,6 +27,7 @@ const pacienteRoutes = __importStar(require("../routes/paciente"));
 const historiaClinicaRoutes = __importStar(require("../routes/historiaClinica"));
 const afeccionRoutes = __importStar(require("../routes/afeccion"));
 const medicacionRoutes = __importStar(require("../routes/medicacion"));
+const diagnosticoRoutes = __importStar(require("../routes/diagnostico"));
 class AltaTratamiento {
     constructor() {
         this.router = express_1.Router();
@@ -43,13 +44,17 @@ class AltaTratamiento {
         this.router.get('/historia-clinica/paciente/:idPaciente', historiaClinicaRoutes.obtenerHistoriaClinica); ///////
         //OBTENER AFECCIONES DE LA HISTORIA CLINICA
         this.router.get('/historia-clinica/:idHC', historiaClinicaRoutes.obtenerAfeccion); //////////////////////
+        this.router.get('/afeccion/:idAfeccion', afeccionRoutes.obtenerNombreAfeccion);
         //OBTENER DIAGNOSTICO tipo atributo: DEFINITIVO DE AFECCION
-        this.router.get('/afeccion/:idAfeccion', afeccionRoutes.obtenerDiagnostico);
-        //OBTENER TIPOS ---> NO, se va a hacer del lado del cliente
+        //OBTENER TIPOS ---> Se va a hacer del lado del cliente
+        //this.router.get('/afeccion/:idAfeccion',afeccionRoutes.obtenerDiagnostico);
+        this.router.get('/diagnostico/:idDiagnostico', diagnosticoRoutes.obtenerDiagnostico);
         //VERIFICAR MEDICACION ingresada por el CLIENTE
-        this.router.get('/medicacion/:nombre', medicacionRoutes.obtenerMedicacionxNombre);
+        this.router.get('/medicacion/:nombre', medicacionRoutes.obtenerMedicacionPorXNombre);
         //REGISTRAR TRATAMIENTO
+        console.log('pasa antes de post de tratamiento');
         this.router.post('/tratamiento', tratamientoRoutes.registrarTratamiento);
+        console.log('pasa después de post de tratamiento');
         // ASOCIO TRATAMIENTO A LA AFECCION CORRESPONDIENTE
         this.router.put('/afeccion/:idAfeccion', afeccionRoutes.agregaTratamientoAAfeccion);
     }

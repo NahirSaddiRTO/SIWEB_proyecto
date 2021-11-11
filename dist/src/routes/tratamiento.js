@@ -19,7 +19,7 @@ var __importStar = (this && this.__importStar) || function (mod) {
     return result;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.registrarTratamiento = exports.obtenerTratamientosxMedico = exports.obtenerTratamientoXTipo = exports.obtenerTratamiento = void 0;
+exports.registrarTratamiento = exports.obtenerTratamientosxMedico = exports.obtenerTratamientoXId = exports.obtenerTratamientoXTipo = exports.obtenerTratamiento = void 0;
 const tratamientoCtr = __importStar(require("../controllers/tratamiento.controller"));
 const tratamiento = require("../models/tratamiento");
 var mongoose = require('mongoose');
@@ -39,6 +39,18 @@ async function obtenerTratamientoXTipo(req, res) {
     });
 }
 exports.obtenerTratamientoXTipo = obtenerTratamientoXTipo;
+;
+async function obtenerTratamientoXId(req, res) {
+    //  const consultaId=mongoose.Types.ObjectId(req.params.idConsulta);
+    //  await afeccionCtr.validarConsulta(consultaId).then(async data => {
+    console.log("entro con ", req.params.idTratamiento);
+    const tratamientoId = mongoose.Types.ObjectId(req.params.idTratamiento);
+    console.log(tratamientoId);
+    await tratamientoCtr.obtenerTratamientoXId(tratamientoId).then(async (data) => {
+        res.json(data);
+    });
+}
+exports.obtenerTratamientoXId = obtenerTratamientoXId;
 ;
 async function obtenerTratamientosxMedico(req, res) {
     const medicoId = mongoose.Types.ObjectId(req.params.idMedico);
@@ -63,8 +75,11 @@ exports.obtenerTratamientosxMedico = obtenerTratamientosxMedico;
 async function registrarTratamiento(req, res) {
     const datosTratamiento = new tratamiento(req.body);
     await tratamientoCtr.validarTratamiento(datosTratamiento).then(async (data) => {
+        console.log("paso por acá con ", datosTratamiento);
         if (data && data.valido) {
+            console.log("entroo");
             await datosTratamiento.save();
+            console.log("salgo");
         }
         res.json({ status: res.status, data: data });
     });

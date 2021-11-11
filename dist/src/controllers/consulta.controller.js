@@ -5,7 +5,7 @@ const consulta = require("../models/consulta");
 async function obtenerConsultasMedico(idMedico, fechaDesde, fechaHasta) {
     const query = {
         'medico._id': idMedico,
-        'fechaHora': { $gte: (fechaDesde), $lt: (fechaHasta) }
+        'fechaHora': { $eq: (fechaDesde) }
     };
     const lista = await consulta.find(query);
     return lista;
@@ -14,7 +14,8 @@ exports.obtenerConsultasMedico = obtenerConsultasMedico;
 async function obtenerConsultasPaciente(idPaciente, fechaDesde, fechaHasta) {
     const query = {
         'paciente._id': idPaciente,
-        'fechaHora': { $gte: (fechaDesde), $lt: (fechaHasta) }
+        //        'fechaHora': { $gte: (fechaDesde), $lt: (fechaHasta)}
+        'fechaHora': { $eq: (fechaDesde) }
     };
     console.log("query", query);
     const lista = await consulta.find(query);

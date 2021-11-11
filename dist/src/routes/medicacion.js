@@ -19,10 +19,11 @@ var __importStar = (this && this.__importStar) || function (mod) {
     return result;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.obtenerMedicacionxID = exports.obtenerMedicacionxNombre = void 0;
+exports.obtenerMedicacionxID = exports.obtenerMedicacionPorXNombre = exports.obtenerMedicacionxNombre = void 0;
 const medicacionCtr = __importStar(require("../controllers/medicacion.controller"));
 var mongoose = require('mongoose');
 async function obtenerMedicacionxNombre(req, res) {
+    console.log("entro al back y me fijo si entra el nombre: ", req.params.nombre);
     const nombre = req.params.nombre;
     // console.log("Paso por acá");
     medicacionCtr.obtenerMedicacionPorNombre(nombre).then(async (data) => {
@@ -39,6 +40,24 @@ async function obtenerMedicacionxNombre(req, res) {
     });
 }
 exports.obtenerMedicacionxNombre = obtenerMedicacionxNombre;
+async function obtenerMedicacionPorXNombre(req, res) {
+    console.log("entro al back y me fijo si entra el nombre: ", req.params.nombre);
+    const nombre = req.params.nombre;
+    // console.log("Paso por acá");
+    medicacionCtr.obtenerMedicacionXNombre(nombre).then(async (data) => {
+        const medicacion = data;
+        console.log(medicacion);
+        if (medicacion.length == 0) {
+            res.status(400).json({
+                title: 'Ocurrió un error'
+            });
+        }
+        else {
+            res.json({ medicacion });
+        }
+    });
+}
+exports.obtenerMedicacionPorXNombre = obtenerMedicacionPorXNombre;
 async function obtenerMedicacionxID(req, res) {
     await medicacionCtr.obtenerMedicacionxID(req.params.idMedicacion).then(async (data) => {
         if (!data) {

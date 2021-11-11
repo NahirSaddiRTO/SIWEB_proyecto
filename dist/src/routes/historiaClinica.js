@@ -48,8 +48,9 @@ async function registrarHC(req, res) {
 }
 exports.registrarHC = registrarHC;
 async function obtenerHistoriaClinica(req, res) {
+    console.log("Por parametro me viene esto ", req.params.idPaciente);
     const pacienteId = mongoose.Types.ObjectId(req.params.idPaciente);
-    console.log(pacienteId);
+    console.log("a ver el id del paciente ", pacienteId);
     await historiaClinicaCtl.obtenerHCxPaciente(pacienteId).then(async (data) => {
         if (data.length == 0) {
             res.status(400).json({
@@ -57,6 +58,7 @@ async function obtenerHistoriaClinica(req, res) {
             });
         }
         else {
+            //console.log("desde la transaccion la hc es: ",res) //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
             res.json(data);
         }
     });
@@ -89,7 +91,7 @@ exports.obtenerAfeccionesHC = obtenerAfeccionesHC;
  }*/
 async function obtenerAfeccion(req, res) {
     const idAfeccion = req.params;
-    console.log(idAfeccion);
+    //console.log("Veamos que se manda ",typeof idAfeccion);
     historiaClinicaCtl.obtenerAfeccion(idAfeccion).then(async (data) => {
         const afeccion = data;
         if (afeccion.length == 0) {
@@ -99,6 +101,7 @@ async function obtenerAfeccion(req, res) {
         }
         else {
             res.json(afeccion);
+            console.log("La afeccion del data es ", res.json);
         }
         // console.log(req.body);
         //  res.json(afeccion);

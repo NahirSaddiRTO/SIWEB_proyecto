@@ -19,7 +19,7 @@ var __importStar = (this && this.__importStar) || function (mod) {
     return result;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.agregaTratamientoAAfeccion = exports.agregaConsultaAAfeccion = exports.obtenerDiagnostico = exports.obtenerTratamientosAfeccion = exports.obtenerSintomasAfeccion = exports.obtenerAfecciones = void 0;
+exports.agregaTratamientoAAfeccion = exports.agregaConsultaAAfeccion = exports.obtenerNombreAfeccion = exports.obtenerTratamientosAfeccion = exports.obtenerSintomasAfeccion = exports.obtenerAfecciones = void 0;
 const afeccionCtr = __importStar(require("../controllers/afeccion.controller"));
 var mongoose = require('mongoose');
 async function obtenerAfecciones(req, res) {
@@ -60,12 +60,29 @@ async function obtenerTratamientosAfeccion(req, res) {
     });
 }
 exports.obtenerTratamientosAfeccion = obtenerTratamientosAfeccion;
-async function obtenerDiagnostico(req, res) {
+/*export async function obtenerDiagnostico(req: Request, res: Response) {
+    const afeccionId=mongoose.Types.ObjectId(req.params.idAfeccion);
+   // console.log("El id de la afeccion es? ",afeccionId);
+    await afeccionCtr.obtenerDiagnostico(afeccionId).then(async data => {
+       // console.log("La data es afeccion o diagnositico? ",data);
+        if (data.length===0) {
+            console.log("ERROR");
+            res.status(400).json({
+                title: 'Ocurrió un error'
+            });
+        }
+        else{
+        res.json(data);}
+
+    });
+}*/
+async function obtenerNombreAfeccion(req, res) {
     const afeccionId = mongoose.Types.ObjectId(req.params.idAfeccion);
     // console.log("El id de la afeccion es? ",afeccionId);
-    await afeccionCtr.obtenerDiagnostico(afeccionId).then(async (data) => {
-        // console.log("La data es afeccion o diagnositico? ",data);
-        if (data.length === 0) {
+    await afeccionCtr.obtenerNombreAfeccion(afeccionId).then(async (data) => {
+        console.log("La data es afeccion o diagnositico? ", data);
+        //if (data.length===0) {
+        if (data == null) {
             console.log("ERROR");
             res.status(400).json({
                 title: 'Ocurrió un error'
@@ -76,7 +93,7 @@ async function obtenerDiagnostico(req, res) {
         }
     });
 }
-exports.obtenerDiagnostico = obtenerDiagnostico;
+exports.obtenerNombreAfeccion = obtenerNombreAfeccion;
 async function agregaConsultaAAfeccion(req, res) {
     const afeccionId = mongoose.Types.ObjectId(req.params.idAfeccion);
     if (!(mongoose.Types.ObjectId.isValid(afeccionId))) {

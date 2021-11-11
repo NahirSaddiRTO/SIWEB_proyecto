@@ -16,7 +16,7 @@ import { ConsultaComponent } from './components/consulta/consulta.component';
 import { PacienteComponent } from './components/paciente/paciente.component';
 import { MedicacionComponent } from './components/medicacion/medicacion.component';
 import { FormacionProfesionalComponent } from './components/formacion-profesional/formacion-profesional.component';
-
+import { ConsultaTratamientoComponent } from './components/consulta-tratamientos/consulta-tratamiento.component';
 //RUTAS
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -33,7 +33,8 @@ import { environment } from 'src/environments/environment';
     AltaTratamientoComponent,
     PacienteComponent,
     MedicacionComponent,
-    FormacionProfesionalComponent
+    FormacionProfesionalComponent,
+    ConsultaTratamientoComponent
   ],
   imports: [
     BrowserModule,

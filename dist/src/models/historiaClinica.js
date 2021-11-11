@@ -27,3 +27,4 @@ const historiaClinicaSchema = new mongoose.Schema({
 });
 const historiaClinica = mongoose.model('historiaClinica', historiaClinicaSchema, 'HistoriaClinica');
 module.exports = historiaClinica;
+//export = afec;

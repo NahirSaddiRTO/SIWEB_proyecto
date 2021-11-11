@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.validarTratamiento = exports.obtenerTratamientosxMedico = exports.obtenerTratamientoXTipo = exports.obtenerTratamientos = void 0;
+exports.validarTratamiento = exports.obtenerTratamientosxMedico = exports.obtenerTratamientoXId = exports.obtenerTratamientoXTipo = exports.obtenerTratamientos = void 0;
 const tratamiento = require("../models/tratamiento");
 async function obtenerTratamientos() {
     let doc = await tratamiento.find();
@@ -15,6 +15,16 @@ async function obtenerTratamientoXTipo(tipo) {
     return lista;
 }
 exports.obtenerTratamientoXTipo = obtenerTratamientoXTipo;
+async function obtenerTratamientoXId(idTrata) {
+    const query = {
+        '_id': idTrata
+    };
+    console.log("La query es ", idTrata);
+    const lista = await tratamiento.findById(query);
+    console.log("El tratamiento que trajo es ", lista);
+    return lista;
+}
+exports.obtenerTratamientoXId = obtenerTratamientoXId;
 async function obtenerTratamientosxMedico(idMedico, fechaDesde, fechaHasta) {
     console.log(fechaDesde, fechaHasta);
     const query = {
@@ -36,8 +46,9 @@ async function validarTratamiento(data) {
         console.log(data.tipo);
         console.log(data.descripcion);
         console.log(data.fecha);
+        console.log(data.Medicacion[0]);
         if (data.duracion_en_dias && data.tipo && data.descripcion && data.fecha) {
-            if (data.Medico._id && data.Medicacion._id) {
+            if (data.Medico._id && data.Medicacion[0]._id) { //esto me daba que no estaba validado: data.Medicacion._id
                 estado = "validado";
                 valido = true;
             }
@@ -53,6 +64,8 @@ async function validarTratamiento(data) {
         data += "Faltan datos del tratamiento.";
     }
     console.log(valido);
+    console.log(data);
+    console.log(estado);
     resultado = { valido, datosTratamiento: data, estado };
     return resultado;
 }

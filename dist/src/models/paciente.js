@@ -30,7 +30,7 @@ const pacienteSchema = new mongoose.Schema({
     altura: { type: Number, required: false },
     fechanacimiento: { type: Date, required: true },
     estado: constantes.ESTADOCIVIL,
-    telefono_pac: [{ type: Number, required: true }],
+    telefono_pac: [{ type: Number, required: false }],
     sexo: constantes.SEXO
 });
 const paciente = mongoose.model('paciente', pacienteSchema, 'Paciente');

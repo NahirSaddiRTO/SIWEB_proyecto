@@ -20,6 +20,11 @@ var __importStar = (this && this.__importStar) || function (mod) {
 };
 const mongoose = __importStar(require("mongoose"));
 const tratamientoSchema = new mongoose.Schema({
+    /*  _id: {
+          type: mongoose.Schema.Types.ObjectId,
+          index: true,
+          required: true,
+          auto: true,},*/
     descripcion: { type: String, required: true },
     duracion_en_dias: { type: Number, required: false },
     fecha: { type: Date, required: true },

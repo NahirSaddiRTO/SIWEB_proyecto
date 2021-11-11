@@ -18,9 +18,9 @@ async function obtenerHCxPaciente(idPaciente) {
     const query = {
         'paciente._id': idPaciente
     };
-    console.log("query", query);
+    // console.log("query",query)
     const lista = await historiaClinica_1.default.find(query);
-    console.log("LISTA", lista);
+    // console.log("LISTA",lista);
     return lista;
 }
 exports.obtenerHCxPaciente = obtenerHCxPaciente;
@@ -34,12 +34,13 @@ async function obtenerAfeccionDeHC(legajoHC) {
 exports.obtenerAfeccionDeHC = obtenerAfeccionDeHC;
 async function obtenerAfeccion(idAfeccion) {
     const query = {
-        'afeccion._id': idAfeccion.afeccion
+        hcId: idAfeccion.idHC,
     };
-    console.log("la query ", query);
-    const lista = await historiaClinica_1.default.findById(query);
+    console.log("la query EEEESSS", query);
+    const lista = await historiaClinica_1.default.findById(query.hcId);
     console.log("la listaaa ", lista);
-    return lista;
+    console.log("a ver si da afeccion ", lista.afeccion._id);
+    return lista.afeccion._id;
 }
 exports.obtenerAfeccion = obtenerAfeccion;
 async function registrarHC(data, nrodocumento) {

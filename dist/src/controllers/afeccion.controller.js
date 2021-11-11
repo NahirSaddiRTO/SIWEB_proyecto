@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.agregaTratamientoAAfeccion = exports.agregaConsultaAAfeccion = exports.obtenerDiagnostico = exports.obtenerTratamientosAfeccion = exports.obtenerSintomasAfeccion = exports.obtenerAfecciones = void 0;
+exports.agregaTratamientoAAfeccion = exports.agregaConsultaAAfeccion = exports.obtenerNombreAfeccion = exports.obtenerTratamientosAfeccion = exports.obtenerSintomasAfeccion = exports.obtenerAfecciones = void 0;
 const afeccion = require("../models/afeccion");
 const diagnosticoM = require("../models/diagnostico");
 const sintoma = require("../models/sintoma");
@@ -37,31 +37,43 @@ async function obtenerTratamientosAfeccion(afeccionId) {
     return afeccionSelected;
 }
 exports.obtenerTratamientosAfeccion = obtenerTratamientosAfeccion;
-async function obtenerDiagnostico(idAfeccion) {
-    // const query = //await afeccion.find({ '': 'Tennis' });
-    /*{
-         'diagnostico._id':afeccionId.diagnostico_id,
-        //'diagnostico.tipoDiagnostico':"Definitivo"
-     };*/
-    /* let query=await afeccion.findById(afeccionId);
-     if (query!= null) {
-         query=query.diagnostico._id;
-        // query= await diagnosticoM.find({'tipo-diagnostico':'Definitivo'});
-     }else{
-         query=[];
-     }*/
-    //  console.log("AGAIN id afeccion",idAfeccion);
+/*export async function obtenerDiagnostico(idAfeccion:any) {
+   // const query = //await afeccion.find({ '': 'Tennis' });
+   /*{
+        'diagnostico._id':afeccionId.diagnostico_id,
+       //'diagnostico.tipoDiagnostico':"Definitivo"
+    };*/
+/* let query=await afeccion.findById(afeccionId);
+ if (query!= null) {
+     query=query.diagnostico._id;
+    // query= await diagnosticoM.find({'tipo-diagnostico':'Definitivo'});
+ }else{
+     query=[];
+ }*/
+//  console.log("AGAIN id afeccion",idAfeccion);
+/*  let laAfeccion=await afeccion.findById(idAfeccion);
+  console.log("a ver que tiene la afeccion en controller",laAfeccion)
+ // console.log('idAfeccion diagnostico',laAfeccion.diagnostico);
+  const query = {
+      'diagnostico._id':laAfeccion.diagnostico,
+  };
+ // console.log("la query ",query);
+
+/*   const listaDiagnostico = await diagnosticoM.findById(query["diagnostico._id"]).where('tipoDiagnostico').equals('Definitivo');
+ // console.log("ahora la lista EEEES ",listaDiagnostico);
+  return [listaDiagnostico]
+}*/
+async function obtenerNombreAfeccion(idAfeccion) {
+    console.log("entro al back con obtenerDatosAfeccion");
     let laAfeccion = await afeccion.findById(idAfeccion);
-    // console.log('idAfeccion diagnostico',laAfeccion.diagnostico);
+    console.log("a ver que tiene la afeccion en controller", laAfeccion);
     const query = {
         'diagnostico._id': laAfeccion.diagnostico,
     };
-    // console.log("la query ",query);
-    const listaDiagnostico = await diagnosticoM.findById(query["diagnostico._id"]).where('tipoDiagnostico').equals('Definitivo');
-    // console.log("ahora la lista EEEES ",listaDiagnostico);
-    return [listaDiagnostico];
+    console.log("el nombre ", laAfeccion.nombre);
+    return { nom: laAfeccion.nombre, diag: laAfeccion.diagnostico, sintomas: laAfeccion.sintomas, tratamiento: laAfeccion.tratamiento };
 }
-exports.obtenerDiagnostico = obtenerDiagnostico;
+exports.obtenerNombreAfeccion = obtenerNombreAfeccion;
 async function agregaConsultaAAfeccion(afeccionId, consultaId) {
     try {
         let valido = false;
@@ -92,7 +104,7 @@ async function agregaTratamientoAAfeccion(afeccionId, tratamientoId) {
         let resultado;
         let estado = "";
         let afeccionAModificar = await afeccion.findById(afeccionId);
-        afeccionAModificar.consulta.push({ "_id": tratamientoId._idTratamiento });
+        afeccionAModificar.tratamiento.push({ "_id": tratamientoId._idTratamiento });
         await afeccionAModificar.save();
         estado = "afeccion actualizada";
         resultado = { afeccionModificada: afeccionAModificar, estado };
