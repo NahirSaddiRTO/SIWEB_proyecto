@@ -1,5 +1,7 @@
 
-      <nav class="navbar navbar-expand-lg navbar-white navbar-light"  style="background-color: #eef1cc;">
+     <div>
+       
+     <nav class="navbar navbar-expand-lg navbar-white navbar-light"  style="background-color: #eef1cc;">
         <div class="collapse navbar-collapse" id="navbarColor01">
           <a class="navbar-brand" href="">
             <img src="../../../assets/logo1.png" width="105" height="52">
@@ -41,4 +43,67 @@
 </ng-template>
 </div>
     </nav>
-  
+    
+  </div>
+    <div id="sidemenu" class="menu-collapsed">
+      <!--HEADER-->
+    
+      <div id="header">
+        <!-- <div id="title"><span>Operaciones</span></div>-->
+         <div id="menu-btn">
+             <div class="btn-hamburger"></div>
+             <div class="btn-hamburger"></div>
+             <div class="btn-hamburger"></div>
+         </div>
+
+     </div>
+      <!--ITEMS-->
+      <div id="menu-items">
+          <div class="item">
+              <a href="#">
+                  <div class="icon"><img src="../../../assets/altaPaciente.png" alt=""></div>
+                  <div class="title"><span>Registrar Paciente</span></div>
+              </a>
+          </div>
+
+         <!-- <div class="item separator"></div>-->
+
+          <div class="item">
+              <a href="#">
+                  <div class="icon"><img src="../../../assets/altaTratamiento2.jpg" alt=""></div>
+                  <div class="title"><span>Registrar Tratamiento</span></div>
+              </a>
+          </div>
+          <div class="item">
+              <a href="#">
+                  <div class="icon"><img src="../../../assets/consultaMed2.jpg" alt=""></div>
+                  <div class="title"><span>Consultar Medicaciones</span></div>
+              </a>
+          </div>
+          <div class="item">
+              <a href="#"> <!--width="30" height="52"-->
+                  <div class="icon"><img src="../../../assets/consultaTratamiento2.jpg" alt=""></div>
+                  <div class="title"><span>Consultar Tratamiento</span></div>
+              </a>
+          </div>
+      </div>
+
+      
+
+
+
+      
+     
+
+
+  </div>
+
+  <!-- <div id= "main-container"> Hola a todos </div> -->
+  <script>const btn=document.querySelector('#menu-btn');
+          const menu=document.querySelector('#sidemenu');
+          btn.addEventListener('click',e=>{
+              menu.classList.toggle("menu-expanded");
+              menu.classList.toggle("menu-collapsed");
+              document.querySelector('body').classList.toggle('body-expanded');
+          });
+  </script>

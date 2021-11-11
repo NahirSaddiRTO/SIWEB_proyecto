@@ -21,6 +21,8 @@ import { ConsultaTratamientoComponent } from './components/consulta-tratamientos
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
+
+import { MenuComponent } from './components/menu-lateral/menu.component';
 import { environment } from 'src/environments/environment';
 
 
@@ -34,7 +36,8 @@ import { environment } from 'src/environments/environment';
     PacienteComponent,
     MedicacionComponent,
     FormacionProfesionalComponent,
-    ConsultaTratamientoComponent
+    ConsultaTratamientoComponent,
+    MenuComponent
   ],
   imports: [
     BrowserModule,
