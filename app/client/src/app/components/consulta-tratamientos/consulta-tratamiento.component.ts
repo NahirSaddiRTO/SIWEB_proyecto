@@ -489,16 +489,5 @@ agregarTratamientoAfeccion(idTratamiento:any, idAfeccion:any){
 
 
 }
-  /*
-  obtenerTratamientos() {
-    
-    this.tratamientoService.getTratamientos().subscribe((res) => {
-      console.log(res)
-      this.tratamientoService.tratamientos = res;
-    });
-  }
-
-
  
-*/
 }

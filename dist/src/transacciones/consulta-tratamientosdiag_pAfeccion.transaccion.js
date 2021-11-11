@@ -20,9 +20,11 @@ var __importStar = (this && this.__importStar) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = require("express");
+const tratamientoRoutes = __importStar(require("../routes/tratamiento"));
 const pacienteRoutes = __importStar(require("../routes/paciente"));
 const historiaClinicaRoutes = __importStar(require("../routes/historiaClinica"));
 const afeccionRoutes = __importStar(require("../routes/afeccion"));
+const diagnosticoRoutes = __importStar(require("../routes/diagnostico"));
 class ConsultaTratamiento {
     constructor() {
         this.router = express_1.Router();
@@ -32,12 +34,15 @@ class ConsultaTratamiento {
         //OBTENER PACIENTE
         this.router.get('/paciente/:nroDoc/:tipoDoc', pacienteRoutes.obtenerPacientesxDNI);
         //OBTENER HISTORIA CLINICA del PACIENTE POR NRO Y TIPO DE DOC junto a sus ¿afecciones?
-        this.router.get('/historiaClinica/paciente/:idPaciente', historiaClinicaRoutes.obtenerHistoriaClinica);
+        this.router.get('/historia-clinica/paciente/:idPaciente', historiaClinicaRoutes.obtenerHistoriaClinica);
         //OBTENER SINTOMAS DE ESTA AFECCION y DIAGNOSTICO .. acá la afección la elije el cliente desde las disponibles de la HC
-        this.router.get('/afeccion/:idAfeccion', afeccionRoutes.obtenerSintomasAfeccion);
-        this.router.get('/afeccion/:idAfeccion', afeccionRoutes.obtenerDiagnostico);
+        this.router.get('/afeccion/:idAfeccion', afeccionRoutes.obtenerNombreAfeccion); //obtenerSintomasAfeccion);
+        /*CHEQUEAR ESTA RUTA*/
+        //   this.router.get('/afeccion/:idAfeccion', afeccionRoutes.obtenerDiagnostico);
+        this.router.get('/diagnostico/:idDiagnostico', diagnosticoRoutes.obtenerDiagnostico);
         //  this.router.get('/afeccion/:idAfeccion', afeccionRoutes.obtenerDiagnosticoDAfeccion);
         this.router.get('/afeccion/:idAfeccion', afeccionRoutes.obtenerTratamientosAfeccion);
+        this.router.get('/tratamiento/:idTratamiento', tratamientoRoutes.obtenerTratamientoXId);
     }
 }
 const consultaTratamiento = new ConsultaTratamiento();
