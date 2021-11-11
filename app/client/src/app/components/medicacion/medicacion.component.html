@@ -1,76 +1,130 @@
-
-
 <div class="col-lg-8 mx-auto">
-    <div class="card mx-auto">
-      <div class="card-header">
-        <div class="alert alert-info" name="titulo-transaccion" role="alert">
-          Consulta de medicaciones prescriptas por un médico en un rango de fecha
+  <div class="card mx-auto">
+    <div class="card-header">
+      <div class="alert alert-info" name="titulo-transaccion" role="alert">
+        Consulta de medicaciones prescriptas por un médico en un rango de fecha
+      </div>
+    </div>
+
+    <div class="container p-4">
+      <form class="row">
+        <app-formacion-profesional #formProf></app-formacion-profesional>
+        <div
+          class="input-group col-md-12"
+          *ngIf="formProf.formacionProfesional.length"
+        >
+          <span class="input-group-text">Fecha desde</span>
+          <input
+            type="date"
+            class="form-control"
+            name="fechaDesde"
+            id="fechaDesde"
+            name="fechaDesde"
+            [(ngModel)]="fechaDesde"
+          />
+          <span class="input-group-text">Fecha Hasta</span>
+
+          <input
+            type="date"
+            class="form-control"
+            name="fechaHasta"
+            id="fechaHasta"
+            name="fechaHasta"
+            [(ngModel)]="fechaHasta"
+          />
+          <button
+            class="btn btn-outline-secondary"
+            type="button"
+            id="buscarConsultas"
+            (click)="buscarConsultas(formProf.idMedico, fechaDesde, fechaHasta)"
+          >
+            Buscar
+          </button>
         </div>
+
+
+        
+        <div
+          class="col-12"
+          style="height: 50px"
+          *ngIf="
+            formProf.formacionProfesional.length &&
+            !tratamientosMedico.length &&
+            mostrarErrorTratamientosMedico
+          "
+        >
+          <div class="alert alert-danger" role="alert">
+            No hay tratamientos en ese rango - Buscar nuevamente
+          </div>
+        </div>
+        <div class="input-group col-md-12">
+          <table
+            class="table table-hover"
+            *ngIf="
+              formProf.formacionProfesional.length &&
+              tratamientosMedico.length &&
+              !mostrarErrorTratamientosMedico
+            "
+          >
+            <thead class="black white-text">
+              <tr>
+                <!-- encabezado de tabla -->
+                <td colspan="5">
+                  <span class="input-group-text">TRATAMIENTOS</span>
+                </td>
+              </tr>
+              <tr>
+                <th *ngFor="let head of headElements" scope="col">
+                  {{ head }}
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let el of tratamientosMedico; let i = index">
+                <th scope="row">{{ i }}</th>
+                <td>{{ el.fecha | date: "dd/mm/yyyy" }}</td>
+
+                <td>{{ el.tipo }}</td>
+                <td>{{ el.descripcion }}</td>
+                <td>
+                  <button
+                    class="btn btn-sm btn-info"
+                    (click)="mostrarMedicacion(el)"
+                  >
+                    Ver
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+          <table *ngIf="verMedicaciones" class="table mb-0">
+            <thead class="black white-text">
+              <tr>
+                <td colspan="4">
+                  <span class="input-group-text">MEDICACIONES</span>
+                </td>
+              </tr>
+              <tr>
+                <th *ngFor="let head1 of headMedicaciones" scope="col">
+                  {{ head1 }}
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let med of medicaciones; let i = index">
+                <th scope="row">{{ i }}</th>
+                <td>{{ med.dosis }}</td>
+                <td>{{ med.nombre }}</td>
+                <td>{{ med.proposito }}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+
+
+      </form>
     </div>
-   
-<div class="container p-4">
-<form class="row">
- <app-formacion-profesional #formProf></app-formacion-profesional>
- <div class="input-group col-md-12" *ngIf="formProf.formacionProfesional.length">
-  <span class="input-group-text">Fecha desde</span>
-<input type="date"  class="form-control" name="fechaDesde" id="fechaDesde"  name="fechaDesde" [(ngModel)]="fechaDesde"/>
- <span class="input-group-text">Fecha Hasta</span>
-
-<input type="date"  class="form-control" name="fechaHasta" id="fechaHasta"  name="fechaHasta" [(ngModel)]="fechaHasta"/> 
-<button class="btn btn-outline-secondary" type="button" id="buscarConsultas" (click)="buscarConsultas(formProf.idMedico,fechaDesde,fechaHasta)">Buscar</button>
+  </div>
 </div>
-
-<div class="col-12" style="height: 50px;" *ngIf='formProf.formacionProfesional.length && !tratamientosMedico.length && mostrarErrorTratamientosMedico'>
-  <div class="alert alert-danger" role="alert" >
- No hay tratamientos en ese rango - Buscar nuevamente</div>
-</div>
-<div class="input-group col-md-12">
-
-  <table class="table table-hover" *ngIf='formProf.formacionProfesional.length && tratamientosMedico.length && !mostrarErrorTratamientosMedico'>
-    <thead class="black white-text">
-      <tr> <!-- encabezado de tabla -->
-        <td colspan="5"> <span class="input-group-text">TRATAMIENTOS</span></td> 
-     </tr>
-      <tr>
-        <th *ngFor="let head of headElements" scope="col">{{head}} </th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let el of tratamientosMedico; let i=index">
-        <th scope="row">{{i}}</th>
-        <td>{{el.fecha | date:'dd/mm/yyyy'}}</td>
-      
-        <td>{{el.tipo}}</td>
-        <td>{{el.descripcion}}</td>
-        <td><button class="btn btn-sm btn-info" (click)="mostrarMedicacion(el)">Ver</button></td>
-      
-      </tr>
-    </tbody>
-  </table>
-  
-  <table *ngIf="verMedicaciones" class="table mb-0">
-    <thead class="black white-text">
-    <tr>
-      <td colspan="4"> <span class="input-group-text">MEDICACIONES</span></td> 
-   </tr>
-    <tr>
-      <th *ngFor="let head1 of headMedicaciones" scope="col">{{head1}} </th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let med of medicaciones; let i=index">
-      <th scope="row">{{i}}</th>
-      <td>{{med.dosis}}</td>
-      <td>{{med.nombre}}</td>
-      <td>{{med.proposito}}</td>
-    </tr>
-  </tbody>
-  </table></div>
-
-  </form>
-    </div>
-</div>
-</div>
-
-
-
