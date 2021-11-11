@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "login-ng-b7a11": {
+      "hosting": {
+        "client": [
+          "login-ng-b7a11"
+        ]
+      }
+    }
+  }
+}

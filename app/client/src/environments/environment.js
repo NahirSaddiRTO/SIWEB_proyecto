@@ -5,7 +5,15 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.environment = void 0;
 exports.environment = {
-    production: false
+    production: false,
+    firebaseConfig: {
+        apiKey: "AIzaSyARND-RZL-sMEYnAyZYEJzdyI7b0EugSww",
+        authDomain: "login-ng-b7a11.firebaseapp.com",
+        projectId: "login-ng-b7a11",
+        storageBucket: "login-ng-b7a11.appspot.com",
+        messagingSenderId: "286311219307",
+        appId: "1:286311219307:web:8160e328c7064e11c8b12e"
+    }
 };
 /*
  * For easier debugging in development mode, you can import the following file

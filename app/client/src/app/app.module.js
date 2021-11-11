@@ -13,30 +13,33 @@ const forms_1 = require("@angular/forms");
 const http_1 = require("@angular/common/http");
 const ng_bootstrap_1 = require("@ng-bootstrap/ng-bootstrap");
 const forms_2 = require("@angular/forms");
+const fire_1 = require("@angular/fire");
+const auth_1 = require("@angular/fire/auth");
 //COMPONENTES
-const root_component_1 = require("./root/root.component");
 const afeccion_component_1 = require("./components/afeccion/afeccion.component");
 const alta_tratamiento_component_1 = require("./components/tratamiento/alta-tratamiento.component");
 const consulta_component_1 = require("./components/consulta/consulta.component");
 const paciente_component_1 = require("./components/paciente/paciente.component");
 const medicacion_component_1 = require("./components/medicacion/medicacion.component");
 const formacion_profesional_component_1 = require("./components/formacion-profesional/formacion-profesional.component");
-const consulta_tratamiento_component_1 = require("./components/consulta-tratamientos/consulta-tratamiento.component");
 //RUTAS
 const app_routing_module_1 = require("./app-routing.module");
+const app_component_1 = require("./app.component");
+const navbar_component_1 = require("./components/navbar/navbar.component");
+const environment_1 = require("src/environments/environment");
 let AppModule = class AppModule {
 };
 AppModule = __decorate([
     (0, core_1.NgModule)({
         declarations: [
-            root_component_1.RootComponent,
+            app_component_1.AppComponent,
+            navbar_component_1.NavbarComponent,
             afeccion_component_1.AfeccionComponent,
             consulta_component_1.ConsultaComponent,
             alta_tratamiento_component_1.AltaTratamientoComponent,
             paciente_component_1.PacienteComponent,
             medicacion_component_1.MedicacionComponent,
-            formacion_profesional_component_1.FormacionProfesionalComponent,
-            consulta_tratamiento_component_1.ConsultaTratamientoComponent
+            formacion_profesional_component_1.FormacionProfesionalComponent
         ],
         imports: [
             platform_browser_1.BrowserModule,
@@ -44,10 +47,12 @@ AppModule = __decorate([
             ng_bootstrap_1.NgbModule,
             forms_1.FormsModule,
             http_1.HttpClientModule,
-            forms_2.ReactiveFormsModule
+            forms_2.ReactiveFormsModule,
+            fire_1.AngularFireModule.initializeApp(environment_1.environment.firebaseConfig),
+            auth_1.AngularFireAuthModule
         ],
         providers: [],
-        bootstrap: [root_component_1.RootComponent]
+        bootstrap: [app_component_1.AppComponent]
     })
 ], AppModule);
 exports.AppModule = AppModule;
