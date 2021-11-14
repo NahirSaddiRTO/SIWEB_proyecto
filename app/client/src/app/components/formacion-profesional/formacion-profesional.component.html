@@ -1,32 +1,53 @@
-<div class="input-group col-md-12" >
+<div class="form-row">
+  <div class="input-group col-md-12 mt-3">
     <div class="input-group-prepend">
       <span class="input-group-text">Ingrese datos del Profesional</span>
     </div>
-    <input type="text" class="form-control" name="matricula" [(ngModel)]="matricula" id="matricula" placeholder="Ingrese Nro. matricula">
-    <input type="text" class="form-control"  name="tipoMatricula" [(ngModel)]="tipoMatricula" id="tipoMatricula" placeholder="Ingrese Tipo. matricula">
-    <button class="btn btn-outline-secondary" type="button" id="buscarProfesional" (click)="buscarProfesional(tipoMatricula,matricula)">Buscar</button>
+    <label class="sr-only" for="matricula">matricula</label>
+    <input type="text" class="form-control" name="matricula" [(ngModel)]="matricula" id="matricula"
+      placeholder="Ingrese Nro. matricula">
+    <label class="sr-only" for="tipoMatricula">tipoMatricula</label>
+    <input type="text" class="form-control" name="tipoMatricula" [(ngModel)]="tipoMatricula" id="tipoMatricula"
+      placeholder="Ingrese Tipo. matricula">
+    <button class="btn btn-secondary" type="button" id="buscarProfesional"
+      (click)="buscarProfesional(tipoMatricula,matricula)">Buscar</button>
   </div>
+</div>
 
-  <div class="col-12" style="height: 50px;" *ngIf='mostrarErrorFP '>
-    <div class="alert alert-danger" role="alert"  >
+
+<div class="form-row">
+  <div class="col-md-12 mt-3" *ngIf='mostrarErrorFP '>
+    <div class="alert alert-danger" role="alert">
       No existe esa formación profesional
     </div>
   </div>
- 
+</div>
 
-  <div class="col" style="height: 50px;"*ngIf='formacionProfesional.length && !mostrarErrorFP '>
+
+<div class="form-row">
+  <div class="col-md-12 mt-3" *ngIf='formacionProfesional.length && !mostrarErrorFP '>
     <div class="alert alert-success" role="alert">
-     Formación profesional encontrada</div>
-  </div>
-
-  <div class="col-12" style="height: 50px;" *ngIf='formacionProfesional.length && !mostrarErrorFP && mostrarErrorMedico'>
-    <div class="alert alert-danger" role="alert" >
-    No hay medico con esa formación profesional</div>
-  </div>
-
-  <div class="input-group col-md-12" *ngIf="formacionProfesional.length && !mostrarErrorFP && !mostrarErrorMedico">
-    <div class="input-group-prepend has-success">
-      <span class="input-group-text">Datos del Profesional</span>
+      Formación profesional encontrada
     </div>
-    <input type="text" class="form-control" name="nombreMedico" [(ngModel)]="nombreMedico" id="nombreMedico" disabled>
   </div>
+</div>
+
+
+<div class="form-row">
+<div class="col-md-12 mt-3" *ngIf='formacionProfesional.length && !mostrarErrorFP && mostrarErrorMedico'>
+  <div class="alert alert-danger" role="alert">
+    No hay medico con esa formación profesional
+  </div>
+</div>
+</div>
+
+<div class="form-row">
+<div class="input-group col-md-12" *ngIf="formacionProfesional.length && !mostrarErrorFP && !mostrarErrorMedico">
+
+  <label class="sr-only"for="nombreMedico">nombreMedico</label>
+  <div class="input-group-prepend has-success">
+    <span class="input-group-text">Datos del Profesional</span>
+  </div>
+  <input type="text" class="form-control" name="nombreMedico" [(ngModel)]="nombreMedico" id="nombreMedico" disabled>
+</div>
+</div>

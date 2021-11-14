@@ -1,140 +1,165 @@
+<div class="col-lg-8 mx-auto mt-5">
+  <div class="card mx-auto">
 
-
-<div class="col-lg-8 mx-auto">
-    <div class="card mx-auto">
-      <div class="card-header">
-        <div class="alert alert-info" name="titulo-transaccion" role="alert">
-          Alta de consulta
-        </div>
-    </div>
-   
-<div class="container p-4">
-<form class="row">
-  <div class="input-group col-md-12">
-    <div class="input-group-prepend">
-      <span class="input-group-text">Ingrese motivo de su consulta</span>
-    </div>
-    <input type="text" class="form-control" name="consulta.motivo" [(ngModel)]="consulta.motivo" id="motivo" placeholder="Ingrese motivo"  required>
-   
-  </div>   
- <div class="input-group col-md-12" >
-    <div class="input-group-prepend">
-      <span class="input-group-text">Seleccione centro de salud</span>
-    </div>
-               <select *ngIf="centrosSalud && centrosSalud.length" class="form-control" (change)="changeValueCentroSalud($event)"[(ngModel)]="consulta.centroSalud._id" name="consulta.centroSalud._id">
-          <option *ngFor="let item of centrosSalud" value="{{item._id}}" >{{item.Nombre}}</option>
-      </select>
-  </div>
-
-    <!-- <div class="input-group col-md-12" *ngIf="centroSaludSelec">
-      <div class="input-group-prepend">
-        <span class="input-group-text">Ingrese datos del Profesional</span>
-      </div>
-      <input type="matricula" class="form-control" name="matricula" [(ngModel)]="matricula" id="matricula" placeholder="Ingrese Nro. matricula"  required>
-      <input type="tipoMatricula" class="form-control"  name="tipoMatricula" [(ngModel)]="tipoMatricula" id="tipoMatricula" placeholder="Ingrese Tipo. matricula" required>
-      <button class="btn btn-outline-secondary" type="button" id="buscarProfesional" (click)="buscarProfesional(tipoMatricula,matricula)">Buscar</button>
-    </div>
-
-    <div class="col-12" style="height: 50px;" *ngIf='centroSaludSelec && mostrarErrorFP '>
-      <div class="alert alert-danger" role="alert"  >
-        No existe esa formación profesional
+    <div class="card-header">
+      <div class="alert alert-info" name="titulo-transaccion" role="alert">
+        Alta de consulta
       </div>
     </div>
-   
-  
-    <div class="col" style="height: 50px;"*ngIf='centroSaludSelec && formacionProfesional.length && !mostrarErrorFP '>
-      <div class="alert alert-success" role="alert">
-       Formación profesional encontrada</div>
-    </div>
 
-    <div class="col-12" style="height: 50px;" *ngIf='centroSaludSelec && formacionProfesional.length && !mostrarErrorFP && mostrarErrorMedico'>
-      <div class="alert alert-danger" role="alert" >
-      No hay medico con esa formación profesional</div>
-    </div>
+    <div>
+      <form>
 
-    <div class="input-group col-md-12" *ngIf="centroSaludSelec && formacionProfesional.length && !mostrarErrorFP && !mostrarErrorMedico">
-      <div class="input-group-prepend has-success">
-        <span class="input-group-text">Datos del Profesional</span>
-      </div>
-      <input type="text" class="form-control" name="nombreMedico" [(ngModel)]="nombreMedico" id="nombreMedico" disabled>
-    </div> -->
-    <app-formacion-profesional #formProf></app-formacion-profesional>
-
-    <div class="input-group col-md-12" *ngIf="centroSaludSelec && formProf.formacionProfesional.length">
-      <span class="input-group-text">Ingrese Fecha y hora deseada</span>
-      <input type="datetime-local"  class="form-control" name="fecha" min="2014-01-01" max="2021-12-31" id="fechaDesdeMedico"  name="fechaDesdeMedico" [(ngModel)]="fechaDesdeMedico"/>
-      <button class="btn btn-outline-secondary" type="button" id="buscarConsultasMedico" (click)="buscarConsultasMedico(formProf.idMedico,fechaDesdeMedico)">Buscar</button>
-    </div>
-
-    <div class="col-12" style="height: 50px;" *ngIf='centroSaludSelec && formProf.formacionProfesional.length && consultasMedico.length !mostrarErrorConsultasMedico'>
-      <div class="alert alert-danger" role="alert" >
-      El médico ya posee una consulta en esa fecha y hora - Buscar nuevamente</div>
-    </div>
-
-    <div class="input-group col-md-12" *ngIf='centroSaludSelec && formProf. formacionProfesional.length && !mostrarErrorMedico && mostrarErrorConsultasMedico'>
-        <div class="input-group-prepend">
-          <span class="input-group-text">Ingrese datos del paciente</span>
-        </div>
-        <input type="text" class="form-control" name="nroDni" [(ngModel)]="nroDni" id="nroDni" placeholder="Ingrese Nro. dni"  required>
-        <input type="text" class="form-control"  name="tipoDni" [(ngModel)]="tipoDni" id="tipoDni" placeholder="Ingrese Tipo. dni" required>
-        <button class="btn btn-outline-secondary" type="button" id="buscarPaciente" (click)="buscarPaciente(nroDni,tipoDni)">Buscar</button>
-      </div>
-  
-      <div class="col" style="height: 50px;" *ngIf='centroSaludSelec && formProf.formacionProfesional.length && !mostrarErrorMedico && mostrarErrorConsultasMedico && paciente.length'>
-        <div class="alert alert-success" role="alert">
-         Paciente encontrado</div>
-      </div>
-      <div class="col" *ngIf='centroSaludSelec && formProf.formacionProfesional.length && !mostrarErrorMedico && mostrarErrorConsultasMedico && !paciente.length && mostrarErrorPaciente'>
-        <div class="input-group-prepend">
-          <div class="alert alert-danger col-md-9" role="alert">
-            Paciente no encontrado</div>
-            <button type="submit" class="btn btn-primary col-md-3"  (click)="crearPaciente()"style="height: 50px;">Crear paciente</button>
-         </div>
-          
-        </div>
-     
-
-      <div class="input-group col-md-12" *ngIf='centroSaludSelec && formProf.formacionProfesional.length && !mostrarErrorMedico && mostrarErrorConsultasMedico && paciente.length'>
-        <div class="input-group-prepend has-success">
-          <span class="input-group-text">Datos del Paciente</span>
-        </div>
-        <input type="text" class="form-control" name="nombrePaciente" [(ngModel)]="nombrePaciente" id="nombrePaciente" disabled>
-      </div>
-
-      <div class="col-12" style="height: 50px;" *ngIf='centroSaludSelec && formProf.formacionProfesional.length && !mostrarErrorMedico && consultasPaciente.length && !mostrarErrorConsultasPaciente'>
-        <div class="alert alert-danger" role="alert" >
-          El paciente ya posee una consulta en esa fecha y hora - Buscar nuevamente</div>
-      </div>
-
-      <div class="input-group col-md-12" *ngIf='centroSaludSelec && formProf.formacionProfesional.length && !mostrarErrorMedico && mostrarErrorConsultasPaciente'>
-        <div class="input-group-prepend has-success">
-          <span class="input-group-text">¿Desea asociar a una afeccion existente?</span>
-        </div>
-        <div class="col-auto">
-          <div class="form-check">
-            <input class="form-check-input" type="checkbox" (click)="asociarAfeccion()" name="asociaAfeccion"[(ngModel)]="asociaAfeccion" >
+        <div class="form-row">
+          <div class="input-group col-md-12 mt-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text">Ingrese datos del paciente</span>
+            </div>
+            <label class="sr-only" for="tipoDni">tipoDni</label>
+            <input type="text" class="form-control" name="tipoDni" [(ngModel)]="tipoDni" id="tipoDni"
+              placeholder="Ingrese Tipo. dni" required>
+            <label class="sr-only" for="nroDni">nroDni</label>
+            <input type="text" class="form-control" name="nroDni" [(ngModel)]="nroDni" id="nroDni"
+              placeholder="Ingrese Nro. dni" required>
+            <button class="btn btn-secondary" type="button" id="buscarPaciente"
+              (click)="buscarPaciente(nroDni,tipoDni)">Buscar</button>
           </div>
         </div>
-      </div>
 
-      <div class="input-group col-md-12"  *ngIf='centroSaludSelec && formProf.formacionProfesional.length && !mostrarErrorMedico && mostrarErrorConsultasPaciente && asociaAfeccion && afecciones.length'>
-        <div class="input-group-prepend">
-          <span class="input-group-text">Seleccione afeccion</span>
+        <div class="form-row">
+          <div class="col-md-12 mt-3" *ngIf='!paciente.length && mostrarErrorPaciente'>
+
+              <div class="alert alert-danger col-md-12" role="alert">
+                Paciente no encontrado :(
+              </div>
+              <button type="submit" class="btn btn-dark  col-md-3" (click)="crearPaciente()" style="height: 50px;">Crear
+                paciente</button>
+           
+          </div>
         </div>
-                   <select *ngIf="afecciones && afecciones.length" class="form-control" (change)="changeValueAfeccion($event)" [(ngModel)]="afeccionSelec" name="afeccionSelec">
-              <option *ngFor="let item of afecciones" value="{{item._id}}" >{{item.nombre}}</option>
+
+
+        <div class="form-row">
+          <div class="col-md-12 mt-3" *ngIf='paciente.length'>
+            <div class="alert alert-success" role="alert">
+              Paciente encontrado :)
+            </div>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="input-group col-md-12" *ngIf='paciente.length'>
+            <label class="sr-only" for="nombrePaciente">nombrePaciente</label>
+            <div class="input-group-prepend has-success">
+              <span class="input-group-text">Datos del Paciente</span>
+            </div>
+            <input type="text" class="form-control" name="nombrePaciente" [(ngModel)]="nombrePaciente"
+              id="nombrePaciente" disabled>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="col-md-12 mb-3 mt-3" *ngIf='paciente.length'>
+            <label class="sr-only" for="motivo">motivo</label>
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <span class="input-group-text">Ingrese motivo de su consulta</span>
+              </div>
+              <input type="text" class="form-control" name="consulta.motivo" [(ngModel)]="consulta.motivo" id="motivo"
+                required>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="input-group col-md-12" *ngIf='paciente.length'>
+            <label class="sr-only" for="centroSalud">centroSalud</label>
+            <div class="input-group-prepend">
+              <span class="input-group-text">Seleccione centro de salud</span>
+            </div>
+            <select *ngIf="centrosSalud && centrosSalud.length" class="form-control"
+              (change)="changeValueCentroSalud($event)" [(ngModel)]="consulta.centroSalud._id"
+              name="consulta.centroSalud._id" id="centroSalud">
+              <option *ngFor="let item of centrosSalud" value="{{item._id}}">{{item.Nombre}}</option>
+            </select>
+          </div>
+        </div>
+
+        <div *ngIf='paciente.length && centroSaludSelec'> 
+        <app-formacion-profesional #formProf></app-formacion-profesional>
+      
+
+      <div class="form-row"  *ngIf="formProf.formacionProfesional.length">
+          <div class="input-group col-md-12 mt-3" *ngIf="paciente.length && centroSaludSelec">
+            <label class="sr-only" for="fechaDesdeMedico">fechaDesdeMedico</label>
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <span class="input-group-text">Ingrese Fecha y hora deseada</span>
+              </div>
+              <input type="datetime-local" class="form-control" name="fecha" min="2014-01-01" max="2021-12-31"
+                id="fechaDesdeMedico" name="fechaDesdeMedico" [(ngModel)]="fechaDesdeMedico" />
+              <button class="btn btn-secondary" type="button" id="buscarConsultasMedico"
+                (click)="buscarConsultasMedico(formProf.idMedico,fechaDesdeMedico)">Buscar</button>
+            </div>
+          </div>
+        </div>
+ 
+        <div class="form-row">
+          <div class="col-md-12 mt-3"
+            *ngIf='centroSaludSelec && formProf.formacionProfesional.length && consultasMedico.length !mostrarErrorConsultasMedico'>
+            <div class="alert alert-danger" role="alert">
+              El médico ya posee una consulta en esa fecha y hora - Buscar nuevamente
+            </div>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="col-md-12 mt-3"
+            *ngIf='centroSaludSelec && formProf.formacionProfesional.length && !mostrarErrorMedico && consultasPaciente.length'>
+            <div class="alert alert-danger" role="alert">
+              El paciente ya posee una consulta en esa fecha y hora - Buscar nuevamente</div>
+          </div>
+        </div>
+
+        <div class="form-row">
+        <div class="input-group col-md-12 mt-3"
+          *ngIf='centroSaludSelec && formProf.formacionProfesional.length && !mostrarErrorMedico && mostrarErrorConsultasPaciente && mostrarErrorConsultasMedico'>
+          <label class="sr-only" for="asociaAfeccion">asociaAfeccion</label>
+          <div class="input-group-prepend has-success">
+            <span class="input-group-text">¿Desea asociar a una afeccion existente?</span>
+          </div>
+          <div class="col-auto">
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" (click)="asociarAfeccion()" name="asociaAfeccion" id="asociaAfeccion"
+                [(ngModel)]="asociaAfeccion">
+            </div>
+          </div>
+        </div>
+        </div>
+
+        <div class="form-row">
+        <div class="input-group col-md-12 mt-3"
+          *ngIf='centroSaludSelec && formProf.formacionProfesional.length && !mostrarErrorMedico && mostrarErrorConsultasPaciente &&   mostrarErrorConsultasMedico&& asociaAfeccion && afecciones.length'>
+          <div class="input-group-prepend">
+            <span class="input-group-text">Seleccione afeccion</span>
+          </div>
+          <select *ngIf="afecciones && afecciones.length" class="form-control" (change)="changeValueAfeccion($event)"
+            [(ngModel)]="afeccionSelec" name="afeccionSelec">
+            <option *ngFor="let item of afecciones" value="{{item._id}}">{{item.nombre}}</option>
           </select>
+        </div>
+        </div>
+
+
+        <div class="form-row">
+        <div class="col-md-12 mt-3"
+          *ngIf='centroSaludSelec && formProf.formacionProfesional.length && !mostrarErrorMedico && mostrarErrorConsultasPaciente &&  mostrarErrorConsultasMedico'>
+          <button type="submit" class="btn btn-dark" (click)="save()">Crear consulta</button>
+        </div>
+        </div>
       </div>
-    
-
-
-    <div class="col-12" *ngIf='centroSaludSelec && formProf.formacionProfesional.length && !mostrarErrorMedico && mostrarErrorConsultasPaciente'>
-      <button type="submit" class="btn btn-primary" (click)="save()">Crear consulta</button>
+      </form>
     </div>
-  </form>
-    </div>
+  </div>
+
 </div>
-</div>
-
-
-

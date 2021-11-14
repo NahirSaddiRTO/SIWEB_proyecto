@@ -60,7 +60,8 @@ getMedicoConFP(idFormacion: String): Observable<IMedico[]>{
 
 getConsultasMedico(idMedico: String,fechaDesde:Date): Observable<IConsulta[]>{
   console.log(this.URI+'/medico/'+idMedico+'?fechaDesde='+fechaDesde);
-  return this.http.get<IConsulta[]>(this.URI+'/consulta/medico/'+idMedico+'?fechaDesde='+fechaDesde).pipe(
+  //return this.http.get<IConsulta[]>(this.URI+'/consulta/medico/'+idMedico+'?fechaDesde='+fechaDesde).pipe(
+  return this.http.get<IConsulta[]>(this.URI+'/consulta/medico/'+idMedico+'?fechaDesde=2014-02-10 10:50:57.240Z').pipe(
     map((data) => {
       console.log("consulta",data)
        return data;
