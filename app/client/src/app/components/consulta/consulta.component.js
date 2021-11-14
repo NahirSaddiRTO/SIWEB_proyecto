@@ -46,36 +46,47 @@ let ConsultaComponent = class ConsultaComponent {
             console.log("centros", this.centrosSalud);
         });
     }
-    //   buscarProfesional(tipoMatricula:any, nroMatricula:any){
-    //     console.log(tipoMatricula,nroMatricula);
-    //     this.consultaService.getProfesional(tipoMatricula,nroMatricula).subscribe(data => { 
-    //       console.log("data",data)
-    //       this.formacionProfesional = data;
-    //       if(this.formacionProfesional.length==0){
-    //         this.mostrarErrorFP = true;
-    //       }
-    //       else{
-    //         this.mostrarErrorFP = false;
-    //         const idFormacion = this.formacionProfesional[0]._id;
-    //         this.buscarMedicoConFP(idFormacion);
-    //       }
-    //   });
-    //  }
-    //  buscarMedicoConFP(idFormacion:any){
-    //   this.consultaService.getMedicoConFP(idFormacion).subscribe(data => { 
-    //     this.medico = data;
-    //     console.log("medico",this.medico);
-    //     if(this.medico.length==0){
-    //       this.mostrarErrorMedico = true;
-    //     }
-    //     else{
-    //       this.nombreMedico=this.medico[0].nombre +','+this.medico[0].apellido;
-    //       this.mostrarErrorMedico = false;
-    //     }
-    // });
-    // }
+    buscarProfesional(tipoMatricula, nroMatricula) {
+        console.log(tipoMatricula, nroMatricula);
+        this.consultaService.getProfesional(tipoMatricula, nroMatricula).subscribe(data => {
+            console.log("data", data);
+            this.formacionProfesional = data;
+            if (this.formacionProfesional.length == 0) {
+                this.mostrarErrorFP = true;
+            }
+            else {
+                this.mostrarErrorFP = false;
+                const idFormacion = this.formacionProfesional[0]._id;
+                this.buscarMedicoConFP(idFormacion);
+                const idPaciente = this.paciente[0]._id;
+                this.buscarConsultasPaciente(idPaciente, this.fechaDesdeMedico);
+                this.mostrarErrorPaciente = false;
+                //   const idFormacion = this.formacionProfesional[0]._id;
+                this.buscarMedicoConFP(idFormacion);
+            }
+        });
+    }
+    buscarMedicoConFP(idFormacion) {
+        this.consultaService.getMedicoConFP(idFormacion).subscribe(data => {
+            this.medico = data;
+            console.log("medico", this.medico);
+            if (this.medico.length == 0) {
+                this.mostrarErrorMedico = true;
+            }
+            else {
+                this.nombreMedico = this.medico[0].nombre + ',' + this.medico[0].apellido;
+                this.mostrarErrorMedico = false;
+            }
+        });
+    }
     buscarConsultasMedico(idMedico, fechaDesde) {
         //const idMedico = this.medico[0]._id;
+        console.log("IDMEDDICO", idMedico);
+        const idPaciente = this.paciente[0]._id;
+        this.buscarConsultasPaciente(idPaciente, this.fechaDesdeMedico);
+        this.mostrarErrorPaciente = false;
+        //   const idFormacion = this.formacionProfesional[0]._id;
+        //  this.buscarMedicoConFP(idFormacion);
         this.consulta.medico._id = idMedico;
         this.consultaService.getConsultasMedico(idMedico, fechaDesde).subscribe(data => {
             this.consultasMedico = data;
@@ -100,10 +111,6 @@ let ConsultaComponent = class ConsultaComponent {
                 //muestro info del paciente
                 this.nombrePaciente = this.paciente[0].nombre + ',' + this.paciente[0].apellido;
                 const idPaciente = this.paciente[0]._id;
-                this.buscarConsultasPaciente(idPaciente, this.fechaDesdeMedico);
-                this.mostrarErrorPaciente = false;
-                // const idFormacion = this.formacionProfesional[0]._id;
-                // this.buscarMedicoConFP(idFormacion);
             }
         });
     }

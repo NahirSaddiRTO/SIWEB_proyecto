@@ -41,7 +41,8 @@ let ConsultaService = class ConsultaService {
     }
     getConsultasMedico(idMedico, fechaDesde) {
         console.log(this.URI + '/medico/' + idMedico + '?fechaDesde=' + fechaDesde);
-        return this.http.get(this.URI + '/consulta/medico/' + idMedico + '?fechaDesde=' + fechaDesde).pipe((0, operators_1.map)((data) => {
+        //return this.http.get<IConsulta[]>(this.URI+'/consulta/medico/'+idMedico+'?fechaDesde='+fechaDesde).pipe(
+        return this.http.get(this.URI + '/consulta/medico/' + idMedico + '?fechaDesde=2014-02-10 10:50:57.240Z').pipe((0, operators_1.map)((data) => {
             console.log("consulta", data);
             return data;
         }), (0, operators_1.catchError)(this.handleError('getConsultasMedico', [])));

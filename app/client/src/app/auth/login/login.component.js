@@ -34,6 +34,18 @@ let LoginComponent = class LoginComponent {
             console.log(err);
         }
     }
+    async loguearseGoogle() {
+        try {
+            const user = await this.authSvc.loginGoogle();
+            if (user) {
+                //regirect a home
+                this.router.navigate(['/home']);
+            }
+        }
+        catch (err) {
+            console.log(err);
+        }
+    }
 };
 LoginComponent = __decorate([
     (0, core_1.Component)({
