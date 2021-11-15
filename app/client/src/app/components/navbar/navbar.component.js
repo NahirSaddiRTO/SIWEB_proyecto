@@ -16,6 +16,7 @@ let NavbarComponent = class NavbarComponent {
         this.user$ = this.authSvc.afAuth.user;
     }
     async ngOnInit() {
+        console.log(this.user$);
     }
     async cerrar() {
         try {
