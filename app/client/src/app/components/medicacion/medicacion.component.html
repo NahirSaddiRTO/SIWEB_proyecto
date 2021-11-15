@@ -1,4 +1,4 @@
-<div class="col-lg-8 mx-auto">
+<div class="col-lg-8 mx-auto mt-5">
   <div class="card mx-auto">
     <div class="card-header">
       <div class="alert alert-info" name="titulo-transaccion" role="alert">
@@ -6,69 +6,50 @@
       </div>
     </div>
 
-    <div class="container p-4">
-      <form class="row">
+    <div>
+      <form>
         <app-formacion-profesional #formProf></app-formacion-profesional>
-        <div
-          class="input-group col-md-12"
-          *ngIf="formProf.formacionProfesional.length"
-        >
-          <span class="input-group-text">Fecha desde</span>
-          <input
-            type="date"
-            class="form-control"
-            name="fechaDesde"
-            id="fechaDesde"
-            name="fechaDesde"
-            [(ngModel)]="fechaDesde"
-          />
-          <span class="input-group-text">Fecha Hasta</span>
 
-          <input
-            type="date"
-            class="form-control"
-            name="fechaHasta"
-            id="fechaHasta"
-            name="fechaHasta"
-            [(ngModel)]="fechaHasta"
-          />
-          <button
-            class="btn btn-outline-secondary"
-            type="button"
-            id="buscarConsultas"
-            (click)="buscarConsultas(formProf.idMedico, fechaDesde, fechaHasta)"
-          >
-            Buscar
-          </button>
-        </div>
-
-
-        
-        <div
-          class="col-12"
-          style="height: 50px"
-          *ngIf="
-            formProf.formacionProfesional.length &&
-            !tratamientosMedico.length &&
-            mostrarErrorTratamientosMedico
-          "
-        >
-          <div class="alert alert-danger" role="alert">
-            No hay tratamientos en ese rango - Buscar nuevamente
+        <div class="form-row">
+          <div class="input-group col-md-12 mt-3" *ngIf="formProf.formacionProfesional.length">
+            <div class="input-group-prepend">
+              <span class="input-group-text">Fecha Desde</span>
+            </div>
+            <label class="sr-only" for="fechaDesde">fechaDesde</label>
+            <input type="date" class="form-control" name="fechaDesde" id="fechaDesde" name="fechaDesde"
+              [(ngModel)]="fechaDesde" />
+            <label class="sr-only" for="fechaHasta">fechaHasta</label>
+            <input type="date" class="form-control" name="fechaHasta" id="fechaHasta" name="fechaHasta"
+              [(ngModel)]="fechaHasta" />
+            <button class="btn btn-secondary" type="button" id="buscarConsultas"
+              (click)="buscarConsultas(formProf.idMedico, fechaDesde, fechaHasta)">
+              Buscar
+            </button>
           </div>
         </div>
-        <div class="input-group col-md-12">
-          <table
-            class="table table-hover"
-            *ngIf="
+
+
+        <div class="form-row">
+          <div class="col-md-12 mt-3"
+            *ngIf='formProf.formacionProfesional.length && !tratamientosMedico.length && mostrarErrorTratamientosMedico '>
+            <div class="alert alert-danger" role="alert">
+              No hay tratamientos en ese rango - Buscar nuevamente
+            </div>
+          </div>
+        </div>
+
+
+
+        <div class="table-responsive">
+
+          <table class="table table-hover" *ngIf="
               formProf.formacionProfesional.length &&
               tratamientosMedico.length &&
               !mostrarErrorTratamientosMedico
-            "
-          >
+            ">
+
             <thead class="black white-text">
               <tr>
-                <!-- encabezado de tabla -->
                 <td colspan="5">
                   <span class="input-group-text">TRATAMIENTOS</span>
                 </td>
@@ -79,48 +60,63 @@
                 </th>
               </tr>
             </thead>
+
             <tbody>
               <tr *ngFor="let el of tratamientosMedico; let i = index">
                 <th scope="row">{{ i }}</th>
                 <td>{{ el.fecha | date: "dd/mm/yyyy" }}</td>
-
                 <td>{{ el.tipo }}</td>
                 <td>{{ el.descripcion }}</td>
                 <td>
-                  <button
-                    class="btn btn-sm btn-info"
-                    (click)="mostrarMedicacion(el)"
-                  >
+                  <button type="button" class="btn btn-sm btn-outline-dark" data-toggle="modal"
+                    data-target="#exampleModal" id="{{i}}" (click)="mostrarMedicacion(el)" data-whatever="@mdo">
                     Ver
                   </button>
                 </td>
               </tr>
-            </tbody>
-          </table>
 
-          <table *ngIf="verMedicaciones" class="table mb-0">
-            <thead class="black white-text">
-              <tr>
-                <td colspan="4">
-                  <span class="input-group-text">MEDICACIONES</span>
-                </td>
-              </tr>
-              <tr>
-                <th *ngFor="let head1 of headMedicaciones" scope="col">
-                  {{ head1 }}
-                </th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr *ngFor="let med of medicaciones; let i = index">
-                <th scope="row">{{ i }}</th>
-                <td>{{ med.dosis }}</td>
-                <td>{{ med.nombre }}</td>
-                <td>{{ med.proposito }}</td>
-              </tr>
             </tbody>
           </table>
         </div>
+
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+          aria-hidden="true" *ngIf="verMedicaciones">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Medicaciones</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+
+                <div class="table-responsive">
+                  <table class="table">
+                    <thead class="black white-text">
+                      <tr>
+                        <th *ngFor="let head1 of headMedicaciones" scope="col">
+                          {{ head1 }}
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let med of medicaciones; let i = index">
+                        <th scope="row">{{ i }}</th>
+                        <td>{{ med.dosis }}</td>
+                        <td>{{ med.nombre }}</td>
+                        <td>{{ med.proposito }}</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+              <div class="modal-footer">
+              </div>
+            </div>
+          </div>
+        </div>
+
 
 
 
@@ -128,3 +124,11 @@
     </div>
   </div>
 </div>
+<script>
+  $('#exampleModal').on('show.bs.modal', function (event) {
+    var button = $(event.relatedTarget)
+    var recipient = button.data('whatever')
+    var modal = $(this)
+    modal.find('.modal-body input').val(recipient)
+  })
+</script>
