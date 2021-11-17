@@ -6,11 +6,11 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.LoginComponent = void 0;
+exports.Login2Component = void 0;
 const core_1 = require("@angular/core");
 const forms_1 = require("@angular/forms");
 const auth_service_1 = require("src/app/services/auth.service");
-let LoginComponent = class LoginComponent {
+let Login2Component = class Login2Component {
     constructor(authSvc, router) {
         this.authSvc = authSvc;
         this.router = router;
@@ -24,9 +24,11 @@ let LoginComponent = class LoginComponent {
     async loguearse() {
         const { email, password } = this.loginForm.value;
         try {
-            const user = await this.authSvc.loguearse(email, password);
-            if (user) {
+            this.user = await this.authSvc.loguearse(email, password);
+            console.log(this.user);
+            if (this.user) {
                 //regirect a home
+                console.log("tendria q irse");
                 this.router.navigate(['/home']);
             }
         }
@@ -36,8 +38,8 @@ let LoginComponent = class LoginComponent {
     }
     async loguearseGoogle() {
         try {
-            const user = await this.authSvc.loginGoogle();
-            if (user) {
+            this.user = await this.authSvc.loginGoogle();
+            if (this.user) {
                 //regirect a home
                 this.router.navigate(['/home']);
             }
@@ -47,12 +49,12 @@ let LoginComponent = class LoginComponent {
         }
     }
 };
-LoginComponent = __decorate([
+Login2Component = __decorate([
     (0, core_1.Component)({
-        selector: 'app-login',
-        templateUrl: './login.component.html',
-        styleUrls: ['./login.component.css'],
+        selector: 'app-login2',
+        templateUrl: './login2.component.html',
+        styleUrls: ['./login2.component.css'],
         providers: [auth_service_1.AuthService]
     })
-], LoginComponent);
-exports.LoginComponent = LoginComponent;
+], Login2Component);
+exports.Login2Component = Login2Component;

@@ -29,6 +29,8 @@ const app_component_1 = require("./app.component");
 const navbar_component_1 = require("./components/navbar/navbar.component");
 const menu_component_1 = require("./components/menu-lateral/menu.component");
 const environment_1 = require("src/environments/environment");
+const login2_component_1 = require("./components/login2/login2.component");
+const registro_component_1 = require("./components/registro/registro.component");
 let AppModule = class AppModule {
 };
 AppModule = __decorate([
@@ -43,7 +45,9 @@ AppModule = __decorate([
             medicacion_component_1.MedicacionComponent,
             formacion_profesional_component_1.FormacionProfesionalComponent,
             consulta_tratamiento_component_1.ConsultaTratamientoComponent,
-            menu_component_1.MenuComponent
+            menu_component_1.MenuComponent,
+            login2_component_1.Login2Component,
+            registro_component_1.RegistroComponent
         ],
         imports: [
             platform_browser_1.BrowserModule,

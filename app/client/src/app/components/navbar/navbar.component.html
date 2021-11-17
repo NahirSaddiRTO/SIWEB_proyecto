@@ -1,17 +1,10 @@
-
-     <div data-component="navbar">
-       
+<!-- 
      <nav class="navbar navbar-expand-lg navbar-white navbar-light"  style="background-color: #292A2C;">
         <div class="collapse navbar-collapse" id="navbarColor01">
           <a class="navbar-brand" href="">
              <img src="../../../assets/logo2.png" width="105" height="52" alt="logo">
           
           </a>
-        <!-- <ul class="navbar-nav">
-          <li class="nav-item d-none d-sm-inline-block">
-            <a routerLink="/" class="nav-link active">siweb</a>
-          </li>
-        </ul> -->
     <ul class="navbar-nav ml-auto" *ngIf="user$ | async as user;else login">
       
       <li class="nav-item dropdown" *ngIf="user$">
@@ -42,184 +35,140 @@
 </ul>
 </ng-template>
 </div>
-    </nav>
-    
-  </div>
-  <div data-component="sidebar">
-    <div class="sidebar">
-    <ul class="list-group flex-column d-inline-block first-menu">
-      <li class="list-group-item pl-3 py-3">
-        <a href="#">
-          <img src="../../../assets/altaPaciente.png" width="50%" height="50%"><span>Registrar Paciente</span>
-          <!-- <div class="icon"><img src="imagenes/altaPaciente.png" alt=""></div> -->
-
-                    <!-- <div class="icon"><img src="imagenes/altaPaciente.png" alt=""></div>
-
-          <div class="title"><span>Registrar Paciente</span></div> -->
-      </a>
-      
-      </li> <!-- /.list-group-item -->
-      
-      <li class="list-group-item pl-3 py-2">
-        <a href="#"><i class="fa fa-user-o" aria-hidden="true"><span class="ml-2 align-middle">Content</span></i></a>
-        <ul class="list-group flex-column d-inline-block submenu">
-          <li class="list-group-item pl-4">
-            <a href="#" class="">Posts</a>
-          
-          <ul class="list-group flex-column d-inline-block sub-submenu">
-              <span class="arrow"></span>
-              <li class="list-group-item pl-4">
-                <a href="#">All Posts</a>
-              </li>
-              <li class="list-group-item pl-4">
-                <a href="#">Add New</a>
-              </li>
-            <li class="list-group-item pl-4">
-                <a href="#">Categories</a>
-              </li>
-            <li class="list-group-item pl-4">
-                <a href="#">Tags</a>
-              </li>
-            </ul>
-          </li> <!-- end Posts -->
-          
-          <li class="list-group-item pl-4">
-            <a href="#" class="">Blog Assist</a>
-            
-            <ul class="list-group flex-column d-inline-block sub-submenu">
-              <span class="arrow" style="top:114px;"></span>
-              <li class="list-group-item pl-4">
-                <a href="#">Add New Blog Post</a>
-              </li>
-              <li class="list-group-item pl-4">
-                <a href="#">Feed Sources</a>
-              </li>
-              <li class="list-group-item pl-4">
-                <a href="#">Add New Feed Source</a>
-              </li>
-            </ul>
-          </li> <!-- end Blog Assist -->
-          
-          
-          <li class="list-group-item pl-4">
-            <a href="#" class="">Pages</a>
-          
-            <ul class="list-group flex-column d-inline-block sub-submenu">
-              <span class="arrow" style="top:166px;"></span>
-              <li class="list-group-item pl-4">
-                <a href="#">All Pages</a>
-              </li>
-              <li class="list-group-item pl-4">
-                <a href="#">Add New</a>
-              </li>
-            </ul>
-          </li> <!-- end Pages -->
-          
-          
-          <li class="list-group-item pl-4">
-            <a href="#" class="">Area Content</a>
-            
-            <ul class="list-group flex-column d-inline-block sub-submenu">
-              <span class="arrow" style="top:220px;"></span>
-              <li class="list-group-item pl-4">
-                <a href="#">All Cities</a>
-              </li>
-              <li class="list-group-item pl-4">
-                <a href="#">Add New City</a>
-              </li>
-              <li class="list-group-item pl-4">
-                <a href="#">All Neighborhoods</a>
-              </li>
-              <li class="list-group-item pl-4">
-                <a href="#">Add New Neighborhood</a>
-              </li>
-            </ul>
-          </li> <!-- end Area Content -->
-          
-          
-          <li class="list-group-item pl-4">
-            <a href="#" class="">Manual Listings</a>
-            
-            <ul class="list-group flex-column d-inline-block sub-submenu">
-              <span class="arrow" style="top:272px;"></span>
-              <li class="list-group-item pl-4">
-                <a href="#">View All Listings</a>
-              </li>
-              <li class="list-group-item pl-4">
-                <a href="#">Add New Listing</a>
-              </li>
-              <li class="list-group-item pl-4">
-                <a href="#">Status</a>
-              </li>
-              <li class="list-group-item pl-4">
-                <a href="#">Locations</a>
-              </li>
-              <li class="list-group-item pl-4">
-                <a href="#">Property Types</a>
-              </li>
-              <li class="list-group-item pl-4">
-                <a href="#">Import Listing</a>
-              </li>
-            </ul>
-          </li> <!-- end Manual Listings -->
-          
-          <li class="list-group-item pl-4">
-            <a href="#" class="">Testimonials</a>
-          
-            <ul class="list-group flex-column d-inline-block sub-submenu">
-              <span class="arrow" style="top:323px;"></span>
-              <li class="list-group-item pl-4">
-                <a href="#">View All</a>
-              </li>
-              <li class="list-group-item pl-4">
-                <a href="#">Add New</a>
-              </li>
-              <li class="list-group-item pl-4">
-                <a href="#">Categories</a>
-              </li>
-            </ul>
-          </li> <!-- end Testimonials -->
-          
-          <li class="list-group-item pl-4">
-            <a href="#" class="">Team Members</a>
-          
-            <ul class="list-group flex-column d-inline-block sub-submenu">
-              <span class="arrow" style="top:377px;"></span>
-              <li class="list-group-item pl-4">
-                <a href="#">All Members</a>
-              </li>
-              <li class="list-group-item pl-4">
-                <a href="#">Add New Member</a>
-              </li>
-              <li class="list-group-item pl-4">
-                <a href="#">Designations</a>
-              </li>
-              <li class="list-group-item pl-4">
-                <a href="#">Specialties</a>
-              </li>
-              <li class="list-group-item pl-4">
-                <a href="#">Areas</a>
-              </li>
-              <li class="list-group-item pl-4">
-                <a href="#">All Locations</a>
-              </li>
-              <li class="list-group-item pl-4">
-                <a href="#">Add New Location</a>
-              </li>
-            </ul>
-          </li> <!-- end Team Members -->
-        
-        </ul> <!-- /.submenu -->
-      </li> <!-- /.list-group-item -->
-      
-
-      
-     
-      
-      
+    </nav> -->
    
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+<div class="wrapper">
+
+  <nav id="sidebar">
+    <div class="sidebar-header">
+
+      <a class="navbar-brand" href="">
+        <img src="../../../assets/logo1.png" width="130" alt="logo">
+
+      </a>
+    </div>
+    <p *ngIf="!hayUsuario ">Inicie Sesión para comenzar</p>
+
+    <ul class="list-unstyled components" *ngIf="hayUsuario">
+   
+      <p>Bienvenido</p>
+      <li *ngIf="esSuperAdmin || esAdministrativo">
+        <a href="#" aria-current="page" routerLink="alta-consulta" >
+          <div class="icon"><img src="../../../assets/altaPaciente.png" alt="Registrar paciente"></div>
+          <div class="title"><span>Registrar Paciente</span></div>
+      </a>
+      </li>
+
+      <li *ngIf="esSuperAdmin || esMedico">
+        <a href="#" >
+          <div class="icon"><img src="../../../assets/altaTratamiento.jpg" alt="Registrar Tratamiento"></div>
+          <div class="title"><span>Registrar Tratamiento</span></div>
+      </a>
+      </li>
+      <li *ngIf="esSuperAdmin || esMedico">
+        <a href="#">
+          <div class="icon"><img src="../../../assets/consultaMed2.jpg" alt="Consultar Medicaciones"></div>
+          <div class="title"><span>Consultar Medicaciones</span></div>
+      </a>
+      </li>
+      <li *ngIf="esSuperAdmin || esMedico">
+        <a href="#" > <!--width="30" height="52"-->
+          <div class="icon"><img src="../../../assets/consultaTratamiento2.jpg" alt="Consultar Tratamiento"></div>
+          <div class="title"><span>Consultar Tratamiento</span></div>
+      </a>
+      </li>
+    </ul>
+
+
+
+  </nav>
+  
+  <div id="content">
+    <nav class="navbar navbar-expand-lg navbar-white navbar-light" style="background-color: #c1c1c1;">
+      <div class="container-fluid">
       
-      
-    </ul> <!-- /.first-menu -->
-  </div> <!-- /.sidebar -->
+        <button class="btn btn-primary d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse"
+          data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+          aria-label="Toggle navigation">
+          <i class="fas fa-align-justify "></i>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav ml-auto" *ngIf="user$ | async as user;else login">
+
+            <li class="nav-item dropdown" *ngIf="user$">
+              <a class="nav-link" data-toggle="dropdown">
+                <div class="avatar avatar-xs" *ngIf="user?.photoURL">
+                  <img id="user" class="avatar-img rounded-circle" src="{{user?.photoURL}}">
+                </div>
+                <div class="avatar avatar-xs" *ngIf="!user?.photoURL">
+                  <img id="user" class="avatar-img rounded-circle" src="../../../assets/3-thumb.png">
+                </div>
+              </a>
+
+              <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item dropdown-footer" (click)="cerrar()">Cerrar Sesion</a>
+              </div>
+            </li>
+          </ul>
+          <ng-template #login>
+            <ul class="nav nav-tabs ml-auto ">
+              <li class="nav-item d-none d-sm-inline-block">
+                <a class="nav-link active" id="login" role="button" (click)=iniciarSesion()>Iniciar Sesion</a>
+              </li>
+              <li class="nav-item d-none d-sm-inline-block">
+                <a class="nav-link active" role="button" (click)=registro()>Registrarse</a>
+              </li>
+            </ul>
+          </ng-template>
+        </div>
+
+      </div>
+   
+    </nav>
+       <app-login2 *ngIf="!hayUsuario && iniciarSesion_var" (selected)="visualizar($event)"> </app-login2>
+      <app-registro  *ngIf="!hayUsuario && registro_var" (selected)="visualizar($event)"></app-registro>
+
+    <!-- <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container-fluid">
+
+                <button type="button" id="sidebarCollapse" class="btn btn-info">
+                    <i class="fas fa-align-left"></i>
+                    <span>Toggle Sidebar</span>
+                </button>
+                <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <i class="fas fa-align-justify"></i>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="nav navbar-nav ml-auto">
+                        <li class="nav-item active">
+                            <a class="nav-link" href="#">Page</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Page</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Page</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Page</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav> -->
   </div>
+</div>
+<script>
+  $(document).ready(function () {
+    $('#sidebarCollapse').on('click', function () {
+      $('#sidebar').toggleClass('active');
+    });
+  });
+  //# sourceURL=pen.js
+      </script>
+      <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>

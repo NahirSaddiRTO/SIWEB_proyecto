@@ -14,18 +14,39 @@ let NavbarComponent = class NavbarComponent {
         this.authSvc = authSvc;
         this.router = router;
         this.user$ = this.authSvc.afAuth.user;
+        this.iniciarSesion_var = false;
+        this.registro_var = false;
     }
     async ngOnInit() {
         console.log(this.user$);
+        if (this.user$) {
+            console.log("re vacio");
+        }
+        else {
+            console.log("alfotiene");
+        }
     }
     async cerrar() {
         try {
+            console.log("USUARIO", this.user$);
             await this.authSvc.cerrarSesion();
-            this.router.navigate(['/login']);
+            this.usuario = null;
+            console.log("USUARIO", this.user$);
         }
         catch (err) {
             console.log(err);
         }
+    }
+    async iniciarSesion() {
+        this.registro_var = false;
+        this.iniciarSesion_var = true;
+        this.usuario = await this.authSvc.getUsuarioActual();
+    }
+    registro() {
+        this.iniciarSesion_var = false;
+        this.registro_var = true;
+        console.log("var iniciarSESION - en registr", this.iniciarSesion_var);
+        console.log("var registro_var - en registr", this.registro_var);
     }
 };
 NavbarComponent = __decorate([

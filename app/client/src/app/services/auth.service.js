@@ -57,7 +57,7 @@ let AuthService = class AuthService {
         }
     }
     ;
-    getUsuarioActual() {
+    async getUsuarioActual() {
         try {
             return this.afAuth.authState.pipe((0, operators_1.first)()).toPromise();
         }

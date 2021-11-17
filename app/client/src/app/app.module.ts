@@ -24,6 +24,8 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 
 import { MenuComponent } from './components/menu-lateral/menu.component';
 import { environment } from 'src/environments/environment';
+import { Login2Component } from './components/login2/login2.component';
+import { RegistroComponent } from './components/registro/registro.component';
 
 
 @NgModule({
@@ -37,7 +39,9 @@ import { environment } from 'src/environments/environment';
     MedicacionComponent,
     FormacionProfesionalComponent,
     ConsultaTratamientoComponent,
-    MenuComponent
+    MenuComponent,
+    Login2Component,
+    RegistroComponent
   ],
   imports: [
     BrowserModule,

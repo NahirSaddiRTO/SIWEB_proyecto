@@ -6,11 +6,11 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.RegisterComponent = void 0;
+exports.RegistroComponent = void 0;
 const core_1 = require("@angular/core");
 const forms_1 = require("@angular/forms");
 const auth_service_1 = require("../../services/auth.service");
-let RegisterComponent = class RegisterComponent {
+let RegistroComponent = class RegistroComponent {
     constructor(authSvc, router) {
         this.authSvc = authSvc;
         this.router = router;
@@ -35,12 +35,12 @@ let RegisterComponent = class RegisterComponent {
         }
     }
 };
-RegisterComponent = __decorate([
+RegistroComponent = __decorate([
     (0, core_1.Component)({
-        selector: 'app-register',
-        templateUrl: './register.component.html',
-        styleUrls: ['./register.component.css'],
+        selector: 'app-registro',
+        templateUrl: './registro.component.html',
+        styleUrls: ['./registro.component.css'],
         providers: [auth_service_1.AuthService]
     })
-], RegisterComponent);
-exports.RegisterComponent = RegisterComponent;
+], RegistroComponent);
+exports.RegistroComponent = RegistroComponent;

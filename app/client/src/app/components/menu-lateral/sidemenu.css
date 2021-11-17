@@ -4,20 +4,21 @@
     --bgcolor:rgb(52,52,52);
     --hovercolor:rgb(23,23,23);
     --width-collapsed:50px;
+    --header-height: 3rem;
+    --nav-width: 68px;
+    --first-color-light: #AFA5D9;
+    --white-color: #F7F6FB;
+    --body-font: 'Nunito', sans-serif;
+    --normal-font-size: 1rem;
+    --z-fixed: 100
 }
-body{
-    background-color: blue;/*#032c55;*/
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 18px;
-    padding:0;
-    margin:0;
-    margin-left: var(--width-collapsed);
-}
+
+
 .body-expanded{
     margin-left: var(--width);
 }
 #main-container{
-    color:white;
+    color:rgb(12, 1, 1);
 }
 #sidemenu{
     background-color:var(--bgcolor);
@@ -25,41 +26,41 @@ body{
     position:fixed;
     height:100%;
     left:0;
-    top:0;
+    top: 77px;;
 }
 #sidemenu a{
-    color:white;
+    color:rgb(102, 9, 9);
     text-decoration:none;
 }
 
 /*HEADER*/
-#sidemenu #header{
+#sidemenu{
     box-sizing: border-box;
     border-bottom: solid 1px var(--hovercolor);
 }
-#sidemenu #header #title{
+#sidemenu #title{
     box-sizing: border-box;
     overflow: hidden;
 }
-#sidemenu #header #title #sidemenu #header #menu-btn{
+#sidemenu #title #sidemenu #menu-btn{
     vertical-align: middle;
 }
-#sidemenu #header #menu-btn{
+#sidemenu #menu-btn{
     display: inline-block;
 }
-#sidemenu #header #menu-btn{
+#sidemenu #menu-btn{
     cursor: pointer;
     padding: 10px;
     width: var(--width-collapsed);
     box-sizing: border-box;
 }
 
-#sidemenu #header #menu-btn:hover{
+#sidemenu #menu-btn:hover{
     background-color: var(--hovercolor);
 }
 
-#sidemenu #header #menu-btn .btn-hamburger{
-    background-color: white;
+#sidemenu #menu-btn .btn-hamburger{
+    background-color: rgb(107, 34, 29);
     width: 100%;
     height:2px;
     margin: 5px 0;
@@ -96,12 +97,7 @@ body{
     display: inline-block;
 }
 #sidemenu #menu-items .item-icon,
-#sidemenu #menu-items .item .title{
-    font-size: 16px;
-    vertical-align:middle;
-    overflow:hidden;
-    display:inline-block;
-}
+
 #sidemenu #menu-items .item a{
     display:block;
     padding: 5px;
@@ -132,14 +128,14 @@ body{
     width: var(--width);
     box-shadow:0 0 10px rgba(0,0,0,0.5);
 }
-.menu-expanded #header #title{
+.menu-expanded #title{
     display: inline-block;
     width: calc(100% -50px);
     margin-right: -5px;
     padding: var(--padding);
 
 }
-.menu-expanded #header #title span{
+.menu-expanded #title span{
     width:calc( var(--width) - var(--width-collapsed) - 5px);
     overflow: hidden;
     display: inline-block;
@@ -154,7 +150,7 @@ body{
     width: var(--width-collapsed);
 
 }
-.menu-collapsed #header #title{
+.menu-collapsed #title{
     width:0;
     height:0;
     padding:0;

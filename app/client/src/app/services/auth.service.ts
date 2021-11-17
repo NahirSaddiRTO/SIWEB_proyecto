@@ -49,7 +49,7 @@ async loginGoogle(){
   }
   };
   
-  getUsuarioActual(){
+  async getUsuarioActual(){
     try{
       return this.afAuth.authState.pipe(first()).toPromise();
    
