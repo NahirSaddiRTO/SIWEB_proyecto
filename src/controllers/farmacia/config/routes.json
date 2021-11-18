@@ -1,0 +1,60 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/farmacias",
+      "handler": "farmacia.index",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+    "method": "GET",
+    "path": "/farmaciasxt",
+    "handler": "farmacia.indext",
+    "config": {
+      "policies": []
+    }
+  },
+    {
+      "method": "GET",
+      "path": "/farmacias/count",
+      "handler": "farmacia.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/farmacias/:id",
+      "handler": "farmacia.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/farmacias",
+      "handler": "farmacia.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/farmacias/:id",
+      "handler": "farmacia.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/farmacias/:id",
+      "handler": "farmacia.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

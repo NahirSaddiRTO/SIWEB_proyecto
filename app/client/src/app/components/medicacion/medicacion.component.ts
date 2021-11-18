@@ -17,7 +17,8 @@ export class MedicacionComponent implements OnInit {
   mostrarErrorTratamientosMedico=false;
   headElements = ['ID','Fecha', 'Tipo', 'Descripción','Medicaciones'];
   headMedicaciones = ['ID','Dosis','Nombre','Proposito'];
-
+  mostrarMensaje=false;
+  msg:any;
   constructor(private tratamientoService: TratamientoService,private consultaService: ConsultaService) { }
 
   ngOnInit(): void {
@@ -68,4 +69,33 @@ export class MedicacionComponent implements OnInit {
       }
   });
    }
+   mandarMail() {
+    console.log('entro a mandar mail');
+    this.consultaService.getMail().subscribe((data) => {
+      console.log('hola', data);
+    });
+    //var data= ServiceEmail.index();
+    // console.log(data);
+    // console.log('mandé mail',data);
+  }
+  mandarFarmaciaTurno() {
+    console.log('entro a farmacia');
+    this.consultaService.getFarmaciaTurno().subscribe((data) => {
+      console.log('hola', data);
+    });
+  }
+
+  mandarEncargado() {
+    console.log('entro a buscar el encargado de la guardia');
+    this.consultaService.getEncargado().subscribe((data) => {
+      console.log('El encargado de la guardia es ', data);/* data[0]*/
+      
+      if(data==null){/* data[0].length==0*/
+        this.msg="No hay encargado";
+      }else{
+        this.mostrarMensaje=true;
+        this.msg=data;/* data[0]*/
+      }
+    });
+  }
 }

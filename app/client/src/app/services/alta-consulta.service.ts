@@ -19,6 +19,7 @@ export class ConsultaService {
   private URI_HC ='http://localhost:4000/alta-paciente-hc'
   private URI_CM ='http://localhost:4000/consultaMedicaciones';
 
+  private URIF ='http://localhost:4000';
   constructor(private http: HttpClient) { }
 
 getCentroSalud(): Observable<ICentroSalud[]>{
@@ -140,5 +141,39 @@ getMedicaciones(idMedicacion: String): Observable<IMedicacion[]>{
     )
   
 }
+getMail(){
+  // return this.http.post(this.URI+'/email','');
+   return this.http.get<String>(this.URIF+'/email').pipe(
+     map((data) => {
+       console.log(" VERRR",data)
+        return data;
+     }),
+     catchError(this.handleError<String>('..........................'))
+     )
+   
+ }
+ 
+ getFarmaciaTurno(){
+   // return this.http.post(this.URI+'/email','');
+    return this.http.get(this.URIF+'/farmacias')/*.pipe(
+      map((data) => {
+        console.log(" VERRR",data)
+         return data;
+      }),
+      catchError(this.handleError<String>('..........................'))
+      )*/
+    
+  }
+  getEncargado(){
+   // return this.http.post(this.URI+'/email','');
+    return this.http.get(this.URIF+'/farmaciasxt')/*.pipe(
+      map((data) => {
+        console.log(" VERRR",data)
+         return data;
+      }),
+      catchError(this.handleError<String>('..........................'))
+      )*/
+    
+  }
 }
 

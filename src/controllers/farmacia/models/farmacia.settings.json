@@ -1,0 +1,36 @@
+{
+  "kind": "collectionType",
+  "collectionName": "farmacias",
+  "info": {
+    "name": "Farmacia"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Nombre": {
+      "type": "string",
+      "required": true,
+      "maxLength": 200
+    },
+    "Direccion": {
+      "type": "text",
+      "maxLength": 200
+    },
+    "Telefono": {
+      "type": "text",
+      "maxLength": 20
+    },
+    "Distrito": {
+      "type": "string",
+      "maxLength": 50
+    },
+    "Ubicacion": {
+      "type": "text",
+      "maxLength": 50
+    }
+  }
+}
