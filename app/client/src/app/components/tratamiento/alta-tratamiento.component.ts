@@ -493,6 +493,12 @@ agregarTratamientoAfeccion(idTratamiento:any, idAfeccion:any){
 
 
 }
+obtenerIMC() {/*deben entrar por parámetro la altura en cm y el peso en kg*/
+  console.log('entro a farmacia');
+  //this.consultaService.getEncargado().subscribe((data) => {
+  //  console.log('hola', data);
+ // });
+}
   /*
   obtenerTratamientos() {
     

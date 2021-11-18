@@ -21,6 +21,42 @@ export class ConsultaService {
 
   constructor(private http: HttpClient) { }
 
+
+  getMail(){
+    // return this.http.post(this.URI+'/email','');
+     return this.http.get<String>(this.URI+'/email').pipe(
+       map((data) => {
+         console.log(" VERRR",data)
+          return data;
+       }),
+       catchError(this.handleError<String>('..........................'))
+       )
+     
+   }
+   
+   getFarmaciaTurno(){
+     // return this.http.post(this.URI+'/email','');
+      return this.http.get(this.URI+'/farmacias')/*.pipe(
+        map((data) => {
+          console.log(" VERRR",data)
+           return data;
+        }),
+        catchError(this.handleError<String>('..........................'))
+        )*/
+      
+    }
+    getEncargado(){
+     // return this.http.post(this.URI+'/email','');
+      return this.http.get(this.URI+'/farmaciasxt')/*.pipe(
+        map((data) => {
+          console.log(" VERRR",data)
+           return data;
+        }),
+        catchError(this.handleError<String>('..........................'))
+        )*/
+      
+    }
+
 getCentroSalud(): Observable<ICentroSalud[]>{
     return this.http.get<ICentroSalud[]>(this.URI+'/centro-salud').pipe(
       map((data) => {

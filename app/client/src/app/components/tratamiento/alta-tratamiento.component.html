@@ -10,169 +10,241 @@
 
     <!--///////////////////////////////////////////////// BUSCO MEDICO /////////////////////////////////////////////////-->
     <div class="card-body">
-        <div class="form-group">
-         <!-- <app-formacion-profesional #formProf></app-formacion-profesional>-->
+      <div class="form-group">
+        <!-- <app-formacion-profesional #formProf></app-formacion-profesional>-->
 
-          <div class="input-group col-md-12" >
-            <div class="input-group-prepend">
-              <span class="input-group-text">Ingrese datos del Profesional</span>
-            </div>
-            <input type="text" class="form-control" name="matricula" [(ngModel)]="matricula" id="matricula" placeholder="Ingrese Nro. matricula">
-            <input type="text" class="form-control"  name="tipoMatricula" [(ngModel)]="tipoMatricula" id="tipoMatricula" placeholder="Ingrese Tipo. matricula">
-            <button class="btn btn-outline-secondary" type="button" id="buscarProfesional" (click)="buscarProfesional(tipoMatricula,matricula)">Buscar</button>
+        <div class="input-group col-md-12">
+          <div class="input-group-prepend">
+            <span class="input-group-text">Ingrese datos del Profesional</span>
           </div>
-        
-          <div class="col-12" style="height: 50px;" *ngIf='mostrarErrorFP '>
-            <div class="alert alert-danger" role="alert"  >
-              No existe esa formación profesional
-            </div>
-          </div>
-         
-        
-          <div class="col" style="height: 50px;"*ngIf='formacionProfesionalBusqueda.length && !mostrarErrorFP '>
-            <div class="alert alert-success" role="alert">
-             Formación profesional encontrada</div>
-          </div>
-        
-          <div class="col-12" style="height: 50px;" *ngIf='formacionProfesionalBusqueda.length && !mostrarErrorFP && mostrarErrorMedico'>
-            <div class="alert alert-danger" role="alert" >
-            No hay medico con esa formación profesional</div>
-          </div>
-        
-          <div class="input-group col-md-12" *ngIf="formacionProfesionalBusqueda.length && !mostrarErrorFP && !mostrarErrorMedico">
-            <div class="input-group-prepend has-success">
-              <span class="input-group-text">Datos del Profesional</span>
-            </div>
-            <input type="text" class="form-control" name="nombreMedico" [(ngModel)]="nombreMedico"  disabled>
-          </div>
-        
 
+          <label class="sr-only" for="matricula">matricula</label>
+          <!--<input type="text" class="form-control" name="tipoDni" [(ngModel)]="tipoDni" id="tipoDni"
+              placeholder="Ingrese Tipo. dni" required>-->
 
+          <input
+            type="text"
+            class="form-control"
+            name="matricula"
+            [(ngModel)]="matricula"
+            id="matricula"
+            placeholder="Ingrese Nro. matricula"
+          />
 
-
-         <!-- <input
-                type="text"
-                class="form-control"
-                required
-                [(ngModel)]="nombreMedico"
-                name="nombreMedico"
-                placeholder="nombreMedico"
-              />-->
+          <label class="sr-only" for="tipoMatricula">tipoMatricula</label>
+          <input
+            type="text"
+            class="form-control"
+            name="tipoMatricula"
+            [(ngModel)]="tipoMatricula"
+            id="tipoMatricula"
+            placeholder="Ingrese Tipo. matricula"
+          />
+          <button
+            class="btn btn-outline-secondary"
+            type="button"
+            id="buscarProfesional"
+            (click)="buscarProfesional(tipoMatricula, matricula)"
+          >
+            Buscar
+          </button>
         </div>
 
-        <!--///////////////////////////////////////////////// BUSCO PACIENTE /////////////////////////////////////////////////-->
-        <div class="form-group">
-          <form #formularioPaciente="ngForm">
-            <div class="form-group">
-              <input
-                type="text"
-                class="form-control"
-                required
-                [(ngModel)]="paciente.tipodni"
-                name="paciente.tipodni"
-                placeholder="Ingrese el tipo de documento del paciente"
-              />
-              <!--TODO: Paciente tipo dni: {{ paciente.tipodni }}-->
-            </div>
+        <div class="col-12" style="height: 50px" *ngIf="mostrarErrorFP">
+          <div class="alert alert-danger" role="alert">
+            No existe esa formación profesional
+          </div>
+        </div>
 
-            <div class="form-group">
-              <input
-                type="text"
-                class="form-control"
-                required
-                [(ngModel)]="paciente.nrodocumento"
-                name="paciente.nrodocumento"
-                placeholder="Ingrese el n° de documento del paciente"
-              />
-              <!--TODO: paciente nro dni: {{ paciente.nrodocumento }}-->
-            </div>
+        <div
+          class="col"
+          style="height: 50px"
+          *ngIf="formacionProfesionalBusqueda.length && !mostrarErrorFP"
+        >
+          <div class="alert alert-success" role="alert">
+            Formación profesional encontrada
+          </div>
+        </div>
 
+        <div
+          class="col-12"
+          style="height: 50px"
+          *ngIf="
+            formacionProfesionalBusqueda.length &&
+            !mostrarErrorFP &&
+            mostrarErrorMedico
+          "
+        >
+          <div class="alert alert-danger" role="alert">
+            No hay medico con esa formación profesional
+          </div>
+        </div>
+
+        <div
+          class="input-group col-md-12"
+          *ngIf="
+            formacionProfesionalBusqueda.length &&
+            !mostrarErrorFP &&
+            !mostrarErrorMedico
+          "
+        >
+          <div class="input-group-prepend has-success">
+            <span class="input-group-text">Datos del Profesional</span>
+          </div>
+          <label class="sr-only" for="nombreMedico">nombreMedico</label>
+          <input
+            type="text"
+            id="nombreMedico"
+            class="form-control"
+            name="nombreMedico"
+            [(ngModel)]="nombreMedico"
+            disabled
+          />
+        </div>
+      </div>
+
+      <!--///////////////////////////////////////////////// BUSCO PACIENTE /////////////////////////////////////////////////-->
+      <div class="form-group">
+        <form #formularioPaciente="ngForm">
+          <div class="input-group col-md-12">
+            <div class="input-group-prepend">
+              <span class="input-group-text">Ingrese datos del Paciente</span>
+            </div>
+            <label class="sr-only" for="tipodniPaciente">tipodniPaciente</label>
+            <input
+              type="text"
+              class="form-control"
+              id="tipodniPaciente"
+              required
+              [(ngModel)]="paciente.tipodni"
+              name="paciente.tipodni"
+              placeholder="Ingrese el tipo de documento del paciente"
+            />
+
+            <label class="sr-only" for="nrodocumentoPaciente"
+              >nrodocumentoPaciente</label
+            >
+            <input
+              type="text"
+              class="form-control"
+              id="nrodocumentoPaciente"
+              required
+              [(ngModel)]="paciente.nrodocumento"
+              name="paciente.nrodocumento"
+              placeholder="Ingrese el n° de documento del paciente"
+            />
             <button
               type="button"
-              class="btn btn-info"
+              class="btn btn-outline-secondary"
               (click)="getPaciente(paciente.nrodocumento, paciente.tipodni)"
             >
-              <!-- (click)="getPaciente(paciente.tipodni,paciente.nrodocumento.value)" getPaciente() -->
-              Buscar paciente
+              Buscar
             </button>
-
-            <div class="form-group">
-              <div class="col" style="height: 20px" *ngIf="encontroPaciente">
-                <div class="alert alert-success" role="alert">
-                  Paciente encontrado
-                </div>
+          </div>
+          <div class="form-group">
+            <div class="col" style="height: 20px" *ngIf="encontroPaciente">
+              <div class="alert alert-success" role="alert">
+                Paciente encontrado
               </div>
             </div>
-          </form>
+          </div>
+        </form>
+      </div>
+
+      <!--///////////////////////////////////////////////// BUSCO AFECCION /////////////////////////////////////////////////-->
+
+      <!--////////////////////////////////// SELECCIONO LA AFECCION //////////////////////////////////-->
+      <div class="btn-group">
+        <!--////////////////////////// SELECCIONO EL TIPO DE DIAGNOSTICO //////////////////////////-->
+      </div>
+     <!-- <div class="dropdown">
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Dropdown button
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+          <a class="dropdown-item" href="#">Action</a>
+          <a class="dropdown-item" href="#">Another action</a>
+          <a class="dropdown-item" href="#">Something else here</a>
         </div>
-
-        <!--///////////////////////////////////////////////// BUSCO AFECCION /////////////////////////////////////////////////-->
-
-        <!--////////////////////////////////// SELECCIONO LA AFECCION //////////////////////////////////-->
-        <div class="btn-group">
-          <!--////////////////////////// SELECCIONO EL TIPO DE DIAGNOSTICO //////////////////////////-->
-        </div>
-
-        <div class="input-group-prepend">
-          <button
-            type="button"
-            class="btn btn-primary"
-            (click)="getAfecciones()"
-            *ngIf="encontroPaciente"
-          >
-            Buscar afeccion para tratar
+    </div>-->
+      <div class="input-group-prepend">
+        <button aria-label="Click buscar afeccion"
+          type="button"
+          class="btn btn-secondary"
+          (click)="getAfecciones()"
+          *ngIf="encontroPaciente"
+        >
+          Buscar afeccion para tratar
+          
+        </button>
+       <!-- <div class="dropdown">
+          <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Dropdown
+            <span class="caret"></span>
           </button>
-          <button
-            type="button"
-            class="btn btn-light"
-            *ngIf="hayAfeccion  && encontroPaciente"
-            (click)="buscarDiagnosticoOn()"
-          >
-            <!--(click)="buscarDiagnosticoOn()-->
-            <div class="card" style="width: 18rem">
-              <div class="card-header">
-                <input
-                  type="text"
-                  class="form-control"
-                  name="nomUnaAfeccion"
-                  [(ngModel)]="nomUnaAfeccion"
-                  id="nomUnaAfeccion"
-                  disabled
-                />
-              </div>
+          <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenuButton">
+            <li><a href="#"> Item</a></li>
+            <li><a href="#"> Item</a></li>
+          </ul>
+          
+        </div>-->
+        
+        
+        <button aria-label="Click buscar diagnostico"
+          type="button"
+          class="btn btn-light"
+          *ngIf="hayAfeccion && encontroPaciente"
+          (click)="buscarDiagnosticoOn()"
+        >
+          <!--(click)="buscarDiagnosticoOn()-->
+          <div class="card" style="width: 18rem">
+            <div class="card-header">
+              <label class="sr-only" for="nombre de una afeccion">nombre de una afeccion</label>
+              <input alt="nombre de afeccion"
+                type="text"
+                class="form-control"
+                name="nomUnaAfeccion"
+                [(ngModel)]="nomUnaAfeccion"
+                id="nombre de una afeccion"
+                disabled
+              />
             </div>
-          </button>
-        </div>
+          </div>
+        </button>
+      </div>
+      
+      <div class="btn-group" dropdown></div>
+      <!--<script src="http://code.jquery.com/jquery-latest.js"></script>-->
 
-        <div class="btn-group" dropdown></div>
-
-        <!--////////////////////////////////// SELECCIONO DIAGNOSTICO ////////////////////////////////// (click)="obtenerDiagnostico()" -->
-        <div class="form-group">
-          <div class="list-group">
-            <div class="input-group-prepend" *ngIf="buscarDiagnostico">
-              <button
-                type="button"
-                class="btn btn-primary"
-                (click)="obtenerDiagnostico()"
-              >
-                Obtener diagnostico definitivo para esa afeccion
-              </button>
-              <button type="button" class="btn btn-light" *ngIf="hayAfeccion">
-                <!--(click)="abtenerDiagnostico()">-->
-                <div class="card" style="width: 32rem">
-                  <div class="card-header">
-                    <input
-                      type="text"
-                      class="form-control"
-                      name="diagnostico"
-                      [(ngModel)]="diagnostico"
-                      disabled
-                    />
-                  </div>
+      <!--////////////////////////////////// SELECCIONO DIAGNOSTICO ////////////////////////////////// (click)="obtenerDiagnostico()" -->
+      <div class="form-group">
+        <div class="list-group">
+          <div class="input-group-prepend" *ngIf="buscarDiagnostico">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              (click)="obtenerDiagnostico()"
+            >
+              Obtener diagnostico definitivo para esa afeccion
+            </button>
+            <button type="button" class="btn btn-light" *ngIf="hayAfeccion">
+              <!--(click)="abtenerDiagnostico()">-->
+              <div class="card" style="width: 32rem">
+                <div class="card-header">
+                  <label class="sr-only" for="nombre de diagnostico">nombre de diagnostico</label>
+                  <input
+                    type="text"
+                    id="nombre de diagnostico"
+                    class="form-control"
+                    name="diagnostico"
+                    [(ngModel)]="diagnostico"
+                    disabled
+                  />
                 </div>
-              </button>
-            </div>
-            <!-- <a href="#" class="list-group-item list-group-item-action active">
+              </div>
+            </button>
+          </div>
+          <!-- <a href="#" class="list-group-item list-group-item-action active">
             Diagnóstico definitivo
           </a>
           <a href="#" class="list-group-item list-group-item-action"
@@ -181,160 +253,171 @@
           <a href="#" class="list-group-item list-group-item-action"
             >Diagnóstico definitivo 2</a
           >-->
-          </div>
         </div>
-        <!--////////////////////////////////// INGRESO LA MEDICACION //////////////////////////////////-->
+      </div>
+      <!--////////////////////////////////// INGRESO LA MEDICACION //////////////////////////////////-->
 
-        <div class="form-group" *ngIf="hayDiagnostico">
-          <input
-            type="text"
-            class="form-control"
-            required
-            [(ngModel)]="medicacion.nombre"
-            name="medicacion.nombre"
-            placeholder="Ingrese el nombre de la medicación "
-          />
-          <!--(click)="verificarMedicacion()"-->
+      <div class="form-group" *ngIf="hayDiagnostico">
+        <label class="sr-only" for="nombre de medicacion">nombre de medicacion</label>
+        <input
+          type="text"
+          id="nombre de medicacion"
+          class="form-control"
+          required
+          [(ngModel)]="medicacion.nombre"
+          name="medicacion.nombre"
+          placeholder="Ingrese el nombre de la medicación "
+        />
+        <!--(click)="verificarMedicacion()"-->
+        <button
+          type="button"
+          class="btn btn-secondary"
+          (click)="verificarMedicacion(medicacion.nombre)"
+        >
+          Verificar la existencia de la medicacion
+        </button>
+        <!--TODO: nombre de la medicación : {{tratamiento.medicacion }}-->
+      </div>
+
+      <div class="form-group" *ngIf="hayDiagnostico && medicacionValida">
+        <div class="input-group col-md-42">
+          <div class="input-group-prepend">
+            <span class="input-group-text"
+              >Seleccione el tipo de tratamiento</span
+            >
+          </div>
+
           <button
             type="button"
-            class="btn btn-primary"
-            (click)="verificarMedicacion(medicacion.nombre)"
+            class="btn btn-secondary"
+            (click)="seleccionaTipo('Psiquiatrico')"
           >
-            Verificar la existencia de la medicacion
+            Psiquiatrico
           </button>
-          <!--TODO: nombre de la medicación : {{tratamiento.medicacion }}-->
-        </div>
 
-        <div class="form-group" *ngIf="hayDiagnostico && medicacionValida">
-          <div class="input-group col-md-42">
-            <div class="input-group-prepend">
-              <span class="input-group-text"
-                >Seleccione el tipo de tratamiento</span
-              >
-            </div>
-
-            <button
-              type="button"
-              class="btn btn-primary"
-              (click)="seleccionaTipo('Psiquiatrico')"
-            >
-              Psiquiatrico
-            </button>
-
-            <button
-              type="button"
-              class="btn btn-primary"
-              (click)="seleccionaTipo('Farmacologico')"
-            >
-              Farmacologico
-            </button>
-          </div>
-          <!--TODO: tipo de tratamiento: {{tratamiento.tipo }}-->
-        </div>
-
-        <div
-          class="form-group"
-          *ngIf="hayDiagnostico && medicacionValida && tipoSeleccionado"
-        >
-          <input
-            type="text"
-            class="form-control"
-            required
-            [(ngModel)]="tratamiento.descripcion"
-            name="tratamiento.descripcion"
-            placeholder="Ingrese la descripción del tratamiento"
-           
-          />
           <button
+            type="button"
+            class="btn btn-secondary"
+            (click)="seleccionaTipo('Farmacologico')"
+          >
+            Farmacologico
+          </button>
+        </div>
+        <!--TODO: tipo de tratamiento: {{tratamiento.tipo }}-->
+      </div>
+
+      <div
+        class="form-group"
+        *ngIf="hayDiagnostico && medicacionValida && tipoSeleccionado"
+      >
+      <label class="sr-only" for="descripcion tratamiendo">descripcion tratamiendo</label>
+        <input
+          type="text"
+          id="descripcion tratamiendo"
+          class="form-control"
+          required
+          [(ngModel)]="tratamiento.descripcion"
+          name="tratamiento.descripcion"
+          placeholder="Ingrese la descripción del tratamiento"
+        />
+        <button
           type="button"
-          class="btn btn-primary"
+          class="btn btn-secondary"
           (click)="descripcionTratamiento(tratamiento.descripcion)"
         >
           Confirmar descripcion
         </button>
-          <!--TODO: descripción del tratamiento : {{tratamiento.descripcion }}-->
-        </div>
+        <!--TODO: descripción del tratamiento : {{tratamiento.descripcion }}-->
+      </div>
 
-        <div
-          class="form-group"
-          *ngIf="hayDiagnostico && medicacionValida && tipoSeleccionado"
-        >
+      <div
+        class="form-group"
+        *ngIf="hayDiagnostico && medicacionValida && tipoSeleccionado"
+      ><label class="sr-only" for="cantidadDias">cantidadDias</label>
+        <input
+          type="text"
+          id="cantidadDias"
+          class="form-control"
+          required
+          [(ngModel)]="tratamiento.duracion_en_dias"
+          name="tratamiento.duracion_en_dias"
+          placeholder="Ingrese la cantidad de días que durará el tratamiento"
+        />
+      </div>
+      <button
+        type="button"
+        class="btn btn-secondary"
+        (click)="diasTratamiento(tratamiento.duracion_en_dias)"
+        *ngIf="hayDiagnostico && medicacionValida && tipoSeleccionado"
+      >
+        Confirmar cantidad de días
+      </button>
+
+      <!--TODO: descripción del tratamiento : {{tratamiento.duracion_en_dias}} *ngIf="centroSaludSelec && formProf.formacionProfesional.length"-->
+      <div
+        class="form-group"
+        *ngIf="hayDiagnostico && medicacionValida && tipoSeleccionado"
+      >
+        <div class="input-group col-md-12">
+          <span class="input-group-text"
+            >Ingrese Fecha y Hora del inicio del tratamiento</span
+          >
+          <label class="sr-only" for="fechaTratamiendo">fechaTratamiento</label>
           <input
-            type="text"
+            type="datetime-local"
+            id="fechaTratamiento"
             class="form-control"
-            required
-            [(ngModel)]="tratamiento.duracion_en_dias"
-            name="tratamiento.duracion_en_dias"
-            placeholder="Ingrese la cantidad de días que durará el tratamiento"
+            name="fecha"
+            min="2014-01-01"
+            max="2030-12-31"
+            [(ngModel)]="tratamiento.fecha"
+            name="tratamiento.fecha"
           />
-        </div>
-        <button
-          type="button"
-          class="btn btn-primary"
-          (click)="diasTratamiento(tratamiento.duracion_en_dias)"
-        >
-          Confirmar cantidad de días
-        </button>
-
-
-
-        <!--TODO: descripción del tratamiento : {{tratamiento.duracion_en_dias}} *ngIf="centroSaludSelec && formProf.formacionProfesional.length"-->
-        <div
-          class="form-group"
-          *ngIf="hayDiagnostico && medicacionValida && tipoSeleccionado"
-        >
-          <div class="input-group col-md-12">
-            <span class="input-group-text"
-              >Ingrese Fecha y Hora del inicio del tratamiento</span
-            >
-            <input
-              type="datetime-local"
-              class="form-control"
-              name="fecha"
-              min="2014-01-01"
-              max="2030-12-31"
-              [(ngModel)]="tratamiento.fecha"
-              name="tratamiento.fecha"
-            />
-            <button
-              class="btn btn-outline-secondary"
-              type="button"
-              (click)="dateTratamiento(tratamiento.fecha)"
-            >
-              Seleccionar
-            </button>
-          </div>
-
-          <!--ACA NO SE SI IRIA CON EL RESTO DE LOS DATOS PARA DAR DE ALTA O NO click)="buscarConsultasMedico()" [(ngModel)]="fechaDesdeMedico"-->
+          <button
+            class="btn btn-outline-secondary"
+            type="button"
+            (click)="dateTratamiento(tratamiento.fecha)"
+          >
+            Seleccionar
+          </button>
         </div>
 
-        <!--///////////////////       finalmente: DAR DE ALTA EL TRATAMIENTO        ///////////////////-->
+        <!--ACA NO SE SI IRIA CON EL RESTO DE LOS DATOS PARA DAR DE ALTA O NO click)="buscarConsultasMedico()" [(ngModel)]="fechaDesdeMedico"-->
+      </div>
 
-        <button
-          class="btn btn-success"
-          (click)="guardarTratamiento()"
-          *ngIf="hayDiagnostico && medicacionValida && tipoSeleccionado && descripcionLista && hayCantDias && hayFecha"
-        >
-          Guardar tratamieno
-        </button>
+      <!--///////////////////       finalmente: DAR DE ALTA EL TRATAMIENTO        ///////////////////-->
 
-        <div class="form-group">
-          <div class="card" *ngIf="altaTratamientoExitosa">
-            <div class="card-header" *ngIf="altaTratamientoExitosa">
-              <div class="alert alert-success" role="alert">
-                Tratamiento guardado!
-              </div>
+      <button
+        class="btn btn-success"
+        (click)="guardarTratamiento()"
+        *ngIf="
+          hayDiagnostico &&
+          medicacionValida &&
+          tipoSeleccionado &&
+          descripcionLista &&
+          hayCantDias &&
+          hayFecha
+        "
+      >
+        Guardar tratamieno
+      </button>
+
+      <div class="form-group">
+        <div class="card" *ngIf="altaTratamientoExitosa">
+          <div class="card-header" *ngIf="altaTratamientoExitosa">
+            <div class="alert alert-success" role="alert">
+              Tratamiento guardado!
             </div>
           </div>
         </div>
-      
+      </div>
     </div>
     <!-- </form>-->
   </div>
+  
 </div>
 
 <!---->
 <!---->
 <!---->
 <!---->
-
