@@ -50,31 +50,31 @@
     </div>
     <p *ngIf="!hayUsuario ">Inicie Sesión para comenzar</p>
 
-    <ul class="list-unstyled components" *ngIf="hayUsuario">
+    <ul class="list-unstyled components" *ngIf="hayUsuario && iniciarSesion_var">
    
       <p>Bienvenido</p>
       <li *ngIf="esSuperAdmin || esAdministrativo">
-        <a href="#" aria-current="page" routerLink="alta-consulta" >
-          <div class="icon"><img src="../../../assets/altaPaciente.png" alt="Registrar paciente"></div>
+        <a class="nav-link active" id="altaPaciente" role="button" (click)=altaDeConsulta() >
+          <div class="icon"><img src="../../../assets/altaPaciente.png" alt="Registra el paciente"></div>
           <div class="title"><span>Registrar Paciente</span></div>
       </a>
       </li>
 
       <li *ngIf="esSuperAdmin || esMedico">
-        <a href="#" >
-          <div class="icon"><img src="../../../assets/altaTratamiento.jpg" alt="Registrar Tratamiento"></div>
+        <a class="nav-link active" id="altaTratamiento" role="button" (click)=altaDeTratamiento() >
+          <div class="icon"><img src="../../../assets/altaTratamiento.jpg" alt="Registra el tratamiento"></div>
           <div class="title"><span>Registrar Tratamiento</span></div>
       </a>
       </li>
       <li *ngIf="esSuperAdmin || esMedico">
-        <a href="#">
-          <div class="icon"><img src="../../../assets/consultaMed2.jpg" alt="Consultar Medicaciones"></div>
+        <a class="nav-link active" id="consultaMedicaciones" role="button" (click)=consultaDeMedicacion()>
+          <div class="icon"><img src="../../../assets/consultaMed2.jpg" alt="Consulta la medicacion"></div>
           <div class="title"><span>Consultar Medicaciones</span></div>
       </a>
       </li>
       <li *ngIf="esSuperAdmin || esMedico">
-        <a href="#" > <!--width="30" height="52"-->
-          <div class="icon"><img src="../../../assets/consultaTratamiento2.jpg" alt="Consultar Tratamiento"></div>
+        <a class="nav-link active" id="consultaTratamiento" role="button" (click)=consultaDeTratamiento() > <!--width="30" height="52"-->
+          <div class="icon"><img src="../../../assets/consultaTratamiento2.jpg" alt="Consulta de un tratamiento"></div>
           <div class="title"><span>Consultar Tratamiento</span></div>
       </a>
       </li>
@@ -131,6 +131,10 @@
     </nav>
        <app-login2 *ngIf="!hayUsuario && iniciarSesion_var" (selected)="visualizar($event)"> </app-login2>
       <app-registro  *ngIf="!hayUsuario && registro_var" (selected)="visualizar($event)"></app-registro>
+      <app-medicacion  *ngIf="iniciarSesion_var && (esSuperAdmin || esMedico) && consultarMedicacion && hayUsuario" (selected)="visualizar($event)"></app-medicacion>
+      <app-consulta-tratamiento  *ngIf="iniciarSesion_var && (esSuperAdmin || esMedico) && consultarTratamiento && hayUsuario" (selected)="visualizar($event)"></app-consulta-tratamiento>
+      <app-alta-tratamiento  *ngIf="iniciarSesion_var && (esSuperAdmin || esMedico) && altaTratamiento && hayUsuario" (selected)="visualizar($event)"></app-alta-tratamiento>
+      <app-consulta  *ngIf="iniciarSesion_var && (esSuperAdmin || esAdministrativo) && altaConsulta && hayUsuario" (selected)="visualizar($event)"></app-consulta>
 
     <!-- <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container-fluid">

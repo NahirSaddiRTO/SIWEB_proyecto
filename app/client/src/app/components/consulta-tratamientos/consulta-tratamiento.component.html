@@ -1,47 +1,49 @@
-<div class="col-lg-8 mx-auto">
-  <div class="card">
+<div class="col-lg-8 mx-auto mt-5">
+  <div class="card mx-auto">
     <div class="card-header">
       <div class="alert alert-info" role="alert">
         Consulta de un tratamiento para una afección
       </div>
     </div>
 
-    <div class="container p-4">
+    <div>
     <form>
       <div class="card-body">
         <!--<form (submit)="uploadPhoto(title, description)">-->
         <div class="form-group">
+
           <form #formularioPacienteBis="ngForm">
-            <div class="form-group">
+            <div class="input-group col-md-12">
+            <div class="input-group-prepend">
+              <span class="input-group-text">Ingrese datos del Paciente</span>
+            </div>
+            <!--<div class="form-group">-->
+              <label class="sr-only" for="tipodniPaciente">tipodniPaciente</label>
               <input
                 type="text"
                 class="form-control"
-                id="pacienteConsulta.tipodni"
+                id="tipodniPaciente"
                 required
                 [(ngModel)]="pacienteConsulta.tipodni"
                 name="pacienteConsulta.tipodni"
                 placeholder="Ingrese el tipo de documento del paciente"
               />
-            </div>
+            <!--</div>-->
 
-            <div class="form-group">
-              <input
-                type="text"
-                class="form-control"
-                id="pacienteConsulta.nrodocumento"
-                required
-                [(ngModel)]="pacienteConsulta.nrodocumento"
+            <label class="sr-only" for="nrodocumentoPaciente"
+              >nrodocumentoPaciente</label
+            >
+            <!--<div class="form-group">-->
+              <input type="text" class="form-control" id="nrodocumentoPaciente"
+                required [(ngModel)]="pacienteConsulta.nrodocumento"
                 name="pacienteConsulta.nrodocumento"
                 placeholder="Ingrese el n° de documento del paciente"
               />
-            </div>
+            <!--</div>-->
 
             <!-- (click)="getPaciente(paciente.tipodni,paciente.nrodocumento.value)" getPaciente() -->
 
-            <button
-              type="button"
-              class="btn btn-info"
-              (click)="
+            <button type="button" class="btn btn-secondary" (click)="
                 getPacienteConsulta(
                   pacienteConsulta.nrodocumento,
                   pacienteConsulta.tipodni
@@ -51,6 +53,9 @@
               <!-- (click)="getPaciente(paciente.tipodni,paciente.nrodocumento.value)" getPaciente() -->
               Buscar paciente
             </button>
+          </div>
+
+
 
             <div class="form-group">
               <div class="card" *ngIf="encontroPacienteConsulta">
@@ -64,10 +69,64 @@
           </form>
         </div>
 
+
+
+        <!--<div class="form-group">
+          <form #formularioPaciente="ngForm">
+            <div class="input-group col-md-12">
+              <div class="input-group-prepend">
+                <span class="input-group-text">Ingrese datos del Paciente</span>
+              </div>
+              <label class="sr-only" for="tipodniPaciente">tipodniPaciente</label>
+              <input
+                type="text"
+                class="form-control"
+                id="tipodniPaciente"
+                required
+                [(ngModel)]="paciente.tipodni"
+                name="paciente.tipodni"
+                placeholder="Ingrese el tipo de documento del paciente"
+              />
+  
+              <label class="sr-only" for="nrodocumentoPaciente"
+                >nrodocumentoPaciente</label
+              >
+              <input
+                type="text"
+                class="form-control"
+                id="nrodocumentoPaciente"
+                required
+                [(ngModel)]="paciente.nrodocumento"
+                name="paciente.nrodocumento"
+                placeholder="Ingrese el n° de documento del paciente"
+              />
+              <button
+                type="button"
+                class="btn btn-outline-secondary"
+                (click)="getPaciente(paciente.nrodocumento, paciente.tipodni)"
+              >
+                Buscar
+              </button>
+            </div>
+            <div class="form-group">
+              <div class="col" style="height: 20px" *ngIf="encontroPaciente">
+                <div class="alert alert-success" role="alert">
+                  Paciente encontrado
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+<select *ngIf="afecciones && afecciones.length" class="form-control" (change)="changeValueAfeccion($event)"
+            [(ngModel)]="afeccionSelec" name="afeccionSelec">
+            <option *ngFor="let item of afecciones" value="{{item._id}}">{{item.nombre}}</option>
+          </select>
+      -->
+
         <div class="input-group-prepend">
           <button
             type="button"
-            class="btn btn-primary"
+            class="btn btn-secondary" *ngIf="encontroPacienteConsulta"
             (click)="getAfeccionesConsulta()"
           >
             Seleccione afeccion para consultar tratamiento

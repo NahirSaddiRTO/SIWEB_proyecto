@@ -20,6 +20,7 @@ export class ConsultaService {
   private URI_CM ='http://localhost:4000/consultaMedicaciones';
 
   private URIF ='http://localhost:4000';
+  //private URIR ='https://randommer.io/api/Name/Suggestions?startingWords=Med';
   constructor(private http: HttpClient) { }
 
 getCentroSalud(): Observable<ICentroSalud[]>{
