@@ -122,7 +122,17 @@
           </table>
         </div>
 
-
+        <div class="col-12" *ngIf="verMedicaciones">
+          <button class="btn btn-sm btn-info" (click)="mandarMail()">Notificar consulta</button>
+          <button class="btn btn-sm btn-info" (click)="mandarFarmaciaTurno()">Farmacia de turno</button>
+          <button class="btn btn-sm btn-info" (click)="mandarEncargado()">Encargado de la guardia</button>
+        </div>
+        <div class="input-group col-md-12" style="height: 50px;" *ngIf='mostrarMensaje'>
+          <div class="input-group-prepend has-success">
+            <span class="input-group-text">Nombre del encargado</span>
+          </div>
+          <input type="text" class="form-control" name="msg" [(ngModel)]="msg" id="msg" disabled>
+        </div>
 
       </form>
     </div>

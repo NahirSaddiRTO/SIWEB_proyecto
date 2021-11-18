@@ -383,6 +383,12 @@ let AltaTratamientoComponent = class AltaTratamientoComponent {
             console.log("afeccion modificada", data);
         });
     }
+    obtenerIMC() {
+        console.log('entro a farmacia');
+        //this.consultaService.getEncargado().subscribe((data) => {
+        //  console.log('hola', data);
+        // });
+    }
 };
 AltaTratamientoComponent = __decorate([
     (0, core_1.Component)({

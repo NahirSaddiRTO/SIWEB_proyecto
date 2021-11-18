@@ -33,6 +33,7 @@ const afeccion_component_1 = require("./components/afeccion/afeccion.component")
 const consulta_component_1 = require("./components/consulta/consulta.component");
 const paciente_component_1 = require("./components/paciente/paciente.component");
 const medicacion_component_1 = require("./components/medicacion/medicacion.component");
+const consulta_tratamiento_component_1 = require("./components/consulta-tratamientos/consulta-tratamiento.component");
 const routes = [
     { path: '', redirectTo: '/home', pathMatch: 'full' },
     { path: 'afeccion', component: afeccion_component_1.AfeccionComponent },
@@ -43,6 +44,7 @@ const routes = [
     { path: 'home', loadChildren: () => Promise.resolve().then(() => __importStar(require('./home/home.module'))).then(m => m.HomeModule) },
     { path: 'login', loadChildren: () => Promise.resolve().then(() => __importStar(require('./auth/login/login.module'))).then(m => m.LoginModule) },
     { path: 'register', loadChildren: () => Promise.resolve().then(() => __importStar(require('./auth/register/register.module'))).then(m => m.RegisterModule) },
+    { path: 'consultaTratamiento', component: consulta_tratamiento_component_1.ConsultaTratamientoComponent }
 ];
 let AppRoutingModule = class AppRoutingModule {
 };
